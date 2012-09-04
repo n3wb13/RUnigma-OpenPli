@@ -224,6 +224,10 @@ sub process_make_prepare (@)
       {
         $output .= "gunzip -cd " . $f . " | TAPE=- tar -x";
       }
+      elsif ( $_[1] =~ m#\.tar\.xz$# )
+      {
+        $output .= "xz -cd " . $f . " | TAPE=- tar -x";
+      }
       elsif ( $_[1] =~ m#\.tgz$# )
       {
         $output .= "gunzip -cd " . $f . " | TAPE=- tar -x";
@@ -290,6 +294,10 @@ sub process_make_prepare (@)
       elsif ( $_[1] =~ m#\.tar\.gz$# )
       {
         $output .= "gunzip -cd " . $f . " | tar -x";
+      }
+      elsif ( $_[1] =~ m#\.tar\.xz$# )
+      {
+        $output .= "xz -cd " . $f . " | tar -x";
       }
       elsif ( $_[1] =~ m#\.exe$# )
       {

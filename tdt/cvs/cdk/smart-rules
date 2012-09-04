@@ -192,15 +192,15 @@ squashfs
   patch:file://mk{PN}_lzma.diff
 ;
 squashfs
-  4.0
+  4.2
   mk{PN}
   pdircreate:mk{PN}
-  extract:http://heanet.dl.sourceforge.net/sourceforge/sevenzip/lzma465.tar.bz2
+  extract:http://heanet.dl.sourceforge.net/sourceforge/sevenzip/lzma922.tar.bz2
   extract:http://heanet.dl.sourceforge.net/sourceforge/{PN}/{PN}{PV}.tar.gz
   patch:file://{PN}-tools-{PV}-lzma.patch
 ;
 ccache
-  2.4
+  3.1
   {PN}-{PV}
   extract:http://samba.org/ftp/{PN}/{PN}-{PV}.tar.gz
   make:install:DESTDIR=HOST
@@ -265,10 +265,10 @@ module_init_tools
   make:INSTALL=install:install:sbin_PROGRAMS="depmod modinfo":bin_PROGRAMS=:mandir=/usr/share/man:DESTDIR=TARGETS
 ;
 sysvinit
-  2.86
+  2.88
   {PN}-{PV}
   extract:ftp://ftp.cistron.nl/pub/people/miquels/{PN}/{PN}-{PV}.tar.gz
-  nothing:http://ftp.de.debian.org/debian/pool/main/s/{PN}/{PN}_{PV}.ds1-38.diff.gz
+  nothing:http://ftp.de.debian.org/debian/pool/main/s/{PN}/{PN}_{PV}dsf-13.1+squeeze1.diff.gz
 ;
 bzip2
   1.0.6
@@ -278,14 +278,14 @@ bzip2
   make:install:PREFIX=PKDIR/usr
 ;
 grep
-  2.5.1
+  2.14
   {PN}-{PV}
-  extract:ftp://mirrors.kernel.org/gnu/{PN}/{PN}-{PV}.tar.bz2
-  nothing:http://64studio.hivelocity.net/apt/pool/main/g/{PN}/{PN}_{PV}.ds2-6.diff.gz
+  extract:ftp://mirrors.kernel.org/gnu/{PN}/{PN}-{PV}.tar.xz
+  nothing:http://64studio.hivelocity.net/apt/pool/main/g/{PN}/{PN}_2.5.1.ds2-6.diff.gz
   make:install:DESTDIR=PKDIR
 ;
 openrdate
-  1.1.2
+  1.2
   {PN}-{PV}
   extract:http://kent.dl.sourceforge.net/sourceforge/{PN}/{PN}-{PV}.tar.gz
   make:install:DESTDIR=TARGETS
@@ -298,17 +298,16 @@ e2fsprogs
   make:install:DESTDIR=PKDIR
 ;
 xfsprogs
-  2.9.4-1
-  {PN}-2.9.4
-  extract:http://pkgs.fedoraproject.org/repo/pkgs/xfsprogs/xfsprogs_2.9.4-1.tar.gz/174683e3b86b587ed59823fdbbb96ea4/{PN}_{PV}.tar.gz
+  3.1.8
+  extract:ftp://oss.sgi.com/projects/xfs/cmd_tars/{PN}-{PV}.tar.gz
   patch:file://{PN}.diff
   make:install:prefix=/usr:DESTDIR=PKDIR
 ;
 mc
-  4.8.0
+  4.8.4
   {PN}-{PV}
   extract:http://www.midnight-commander.org/downloads/{PN}-{PV}.tar.bz2
-#nothing:file://{PN}.diff
+  nothing:file://{PN}.diff
   make:install:DESTDIR=PKDIR
 ;
 sdparm
@@ -318,26 +317,26 @@ sdparm
   make:install:DESTDIR=PKDIR
 ;
 sg3_utils
-  1.24
+  1.33
   sg3_utils-{PV}
   extract:http://sg.torque.net/sg/p/sg3_utils-{PV}.tgz
   patch:file://sg3_utils.diff
   make:install:DESTDIR=TARGETS
 ;
 console_data
-  1.03
+  1.12
   {PN}-{PV}
   extract:ftp://ftp.debian.org/debian/pool/main/c/{PN}/{PN}_{PV}.orig.tar.gz
   make:install
 ;
 nano
-  2.0.6
+  2.0.9
   {PN}-{PV}
   extract:http://www.{PN}-editor.org/dist/v2.0/{PN}-{PV}.tar.gz
   make:install:DESTDIR=TARGETS
 ;
 rsync
-  2.6.9
+  3.0.9
   {PN}-{PV}
   extract:http://samba.anu.edu.au/ftp/{PN}/{PN}-{PV}.tar.gz
   make:install:DESTDIR=TARGETS
@@ -349,13 +348,13 @@ ntfs_3g
   make:install:DESTDIR=PKDIR
 ;
 lm_sensors
-  2.9.2
+  3.3.2
   lm_sensors-{PV}
   extract:http://dl.{PN}.org/{PN}/releases/lm_sensors-{PV}.tar.gz
   make:user_install:MACHINE=sh:PREFIX=/usr:MANDIR=/usr/share/man:DESTDIR=PKDIR
 ;
 fuse
-  2.9.0
+  2.9.1
   {PN}-{PV}
   extract:http://dfn.dl.sourceforge.net/sourceforge/{PN}/{PN}-{PV}.tar.gz
   patch:file://{PN}.diff
@@ -379,11 +378,11 @@ fbset
   install:-m644:etc/fb.modes.ATI:TARGETS/etc/fb.modes
 ;
 util_linux
-  2.12r
-  {PN}-{PV}
-  extract:ftp://debian.lcs.mit.edu/pub/linux/utils/{PN}/v2.12/{PN}-{PV}.tar.bz2
-  patch:file://{PN}_{PV}-12.deb.diff.gz
-  nothing:file://{PN}-stm.diff
+  2.20.1
+  util-linux-{PV}
+  extract:http://mirror.onat.edu.ua/debian/pool/main/u/util-linux/util-linux_{PV}.orig.tar.gz
+  patch:http://mirror.onat.edu.ua/debian/pool/main/u/util-linux/util-linux_{PV}-5.1.diff.gz
+  nothing:file://util-linux-stm.diff
 ;
 pngquant
   1.1
@@ -392,7 +391,7 @@ pngquant
   install:-m755:{PN}:TARGETS/usr/bin
 ;
 mplayer
-  1.0
+  1.1
   {PN}-export-*
   extract:ftp://ftp.{PN}hq.hu/MPlayer/releases/{PN}-export-snapshot.tar.bz2
   make:install INSTALLSTRIP="":DESTDIR=TARGETS
@@ -436,7 +435,7 @@ usb_modeswitch_data
   make:install:DESTDIR=PKDIR
 ;
 sysstat
-  10.0.4
+  10.1.1
   {PN}-{PV}
   extract:http://pagesperso-orange.fr/sebastien.godard/{PN}-{PV}.tar.gz
   make:install:DESTDIR=TARGETS
@@ -467,21 +466,21 @@ autofs
   make:install:INSTALLROOT=PKDIR
 ;
 imagemagick
-  6.7.7-0
+  6.7.9-0
   ImageMagick-{PV}
   extract:ftp://ftp.fifi.org/pub/ImageMagick/ImageMagick-{PV}.tar.bz2
   make:install:prefix=/usr:DESTDIR=PKDIR
 ;
 libboost
-  boost-1.49.0
-  boost_1_49_0
-  extract:http://prdownloads.sourceforge.net/sourceforge/boost/boost_1_49_0.tar.bz2
+  boost-1.51.0
+  boost_1_51_0
+  extract:http://prdownloads.sourceforge.net/sourceforge/boost/boost_1_51_0.tar.bz2
   patch:file://{PN}.diff
   remove:TARGETS/include/boost
   move:boost:TARGETS/usr/include/boost
 ;
 ncurses
-  5.5
+  5.9
   {PN}-{PV}
   extract:http://ftp.gnu.org/pub/gnu/{PN}/{PN}-{PV}.tar.gz
   
@@ -490,12 +489,11 @@ libz
   1.2.7
   zlib-{PV}
   extract:http://zlib.net/zlib-{PV}.tar.bz2
-  patch:file://zlib-{PV}.patch
   make:install:prefix=PKDIR/usr
   install:-m644:{PN}.a:TARGETS/usr/lib
 ;
 libreadline
-  5.2
+  6.2
   readline-{PV}
   extract:ftp://ftp.cwru.edu/pub/bash/readline-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -534,9 +532,9 @@ libjpeg6b
   make:install:DESTDIR=PKDIR
 ;
 libpng
-  1.5.6
+  1.5.12
   {PN}-{PV}
-  extract:http://www.fhloston-paradise.de/{PN}-{PV}.tar.gz
+  extract:http://prdownloads.sourceforge.net/sourceforge/{PN}/{PN}-{PV}.tar.gz
   nothing:file://{PN}.diff
   make:install:prefix=PKDIR/usr
 ;
@@ -553,28 +551,28 @@ libungif
   make:install:DESTDIR=PKDIR
 ;
 libgif
-  4.1.6
+  5.0.0
   giflib-{PV}
   extract:http://heanet.dl.sourceforge.net/sourceforge/giflib/giflib-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
 ;
 curl
-  7.26.0
+  7.27.0
   {PN}-{PV}
   extract:http://{PN}.haxx.se/download/{PN}-{PV}.tar.gz
   patch:file://lib{PN}.diff
   make:install:DESTDIR=PKDIR
 ;
 libfribidi
-  0.10.4
+  0.19.2
   fribidi-{PV}
   extract:http://fribidi.org/download/fribidi-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
 ;
 libsigc
-  1.2.5
+  1.2.7
   {PN}++-{PV}
-  extract:http://ftp.gnome.org/pub/GNOME/sources/{PN}++/1.2/{PN}++-{PV}.tar.gz
+  extract:http://ftp.gnome.org/pub/GNOME/sources/{PN}++/1.2/{PN}++-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
 ;
 libmad
@@ -598,10 +596,26 @@ libvorbisidec
   patch:file://tremor.diff
   make:install:DESTDIR=PKDIR
 ;
+
+libffi
+  3.0.11
+  {PN}-{PV}
+  extract:ftp://sourceware.org/pub/{PN}/{PN}-{PV}.tar.gz
+  patch:file://libffi-3.0.11.patch
+  make:install:DESTDIR=TARGETS
+;
+
+pkg
+  0.27.1
+  {PN}-{PV}
+  extract:http://pkgconfig.freedesktop.org/releases/pkg-config-{PV}.tar.gz
+  make:install:DESTDIR=TARGETS
+;
+
 glib2
-  2.28.3
+  2.28.8
   glib-{PV}
-  extract:http://ftp.acc.umu.se/pub/GNOME/sources/glib/2.28/glib-{PV}.tar.gz
+  extract:http://ftp.acc.umu.se/pub/GNOME/sources/glib/2.28/glib-{PV}.tar.xz
   patch:file://glib-{PV}.patch
   make:install:DESTDIR=PKDIR
 ;
@@ -625,7 +639,7 @@ lcms
   make:install:DESTDIR=PKDIR
 ;
 openssl
-  0.9.6m
+  1.0.1c
   {PN}-{PV}
   extract:ftp://ftp.{PN}.org/source/{PN}-{PV}.tar.gz
 ;
@@ -640,7 +654,7 @@ directfb
   make:install:DESTDIR=PKDIR:LD=sh4-linux-ld
 ;
 dfbpp
-  1.0.0
+  1.2.0
   DFB++-{PV}
   extract:http://www.directfb.org/downloads/Extras/DFB++-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -690,13 +704,13 @@ libsoup
   make:install:DESTDIR=PKDIR
 ;
 pixman
-  0.18.0
+  0.26.2
   {PN}-{PV}
   extract:http://cairographics.org/releases/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
 ;
 cairo
-  1.8.10
+  1.12.0
   {PN}-{PV}
   extract:http://{PN}graphics.org/releases/{PN}-{PV}.tar.gz
   patch:file://{PN}-{PV}.diff
@@ -709,7 +723,7 @@ expat
   make:install:DESTDIR=PKDIR
 ;
 fontconfig
-  2.5.93
+  2.10.1
   {PN}-{PV}
   extract:http://{PN}.org/release/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -754,7 +768,7 @@ ffmpeg
   make:install:DESTDIR=PKDIR
 ;
 libass
-  0.9.11
+  0.9.13
   {PN}-{PV}
   extract:http://{PN}.googlecode.com/files/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -766,7 +780,7 @@ libcap
   make:install:DESTDIR=PKDIR
 ;
 libogg
-  1.2.2
+  1.3.0
   {PN}-{PV}
   extract:http://downloads.xiph.org/releases/ogg/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -871,7 +885,7 @@ yajl
   make:install:prefix=/usr:DESTDIR=PKDIR
 ;
 libpcre
-  8.30
+  8.31
   pcre-{PV}
   extract:ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-{PV}.tar.bz2
   make:install:prefix=/usr:DESTDIR=PKDIR
@@ -921,7 +935,7 @@ minidlna
   make:install:prefix=/usr:DESTDIR=PKDIR
 ;
 vlc
-  1.1.13
+  2.0.3
   {PN}-{PV}
   extract:http://download.videolan.org/pub/videolan/{PN}/{PV}/{PN}-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
@@ -945,7 +959,7 @@ libupnp
   make:install:DESTDIR=PKDIR
 ;
 rarfs
-  0.0.10
+  0.1.0
   {PN}-{PV}
   extract:http://sourceforge.net/projects/{PN}/files/latest/download/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -984,7 +998,7 @@ libxml2
   make:install:DESTDIR=PKDIR
 ;
 libxslt
-  1.1.24
+  1.1.26
   {PN}-{PV}
   extract:http://xmlsoft.org/sources/{PN}-{PV}.tar.gz
   make:install:DESTDIR=PKDIR
@@ -995,7 +1009,7 @@ lxml
   extract:http://launchpad.net/{PN}/2.2/{PV}/+download/{PN}-{PV}.tgz
 ;
 setuptools
-  0.6c8
+  0.6c11
   {PN}-{PV}
   extract:http://pypi.python.org/packages/source/s/{PN}/{PN}-{PV}.tar.gz
 ;
@@ -1005,9 +1019,9 @@ gdata
   extract:http://gdata-python-client.googlecode.com/files/gdata-{PV}.tar.gz
 ;
 twisted
-  10.2.0
+  12.1.0
   Twisted-{PV}
-  extract:http://twistedmatrix.com/Releases/Twisted/10.2/Twisted-{PV}.tar.bz2
+  extract:http://twistedmatrix.com/Releases/Twisted/12.1/Twisted-{PV}.tar.bz2
 ;
 twistedweb2
   8.1.0
@@ -1077,26 +1091,26 @@ enigma2_openwebif
   make:install:DESTDIR=PKDIR
 ;
 gstreamer
-  0.10.35.2
+  0.10.35.3
   {PN}-{PV}
   extract:http://{PN}.freedesktop.org/src/{PN}/pre/{PN}-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
 ;
 gst_plugins_base
-  0.10.35.2
+  0.10.35.3
   {PN}-{PV}
   extract:http://gstreamer.freedesktop.org/src/{PN}/pre/{PN}-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
 ;
 gst_plugins_good
-  0.10.30.2
+  0.10.30.3
   {PN}-{PV}
   extract:http://gstreamer.freedesktop.org/src/{PN}/pre/{PN}-{PV}.tar.bz2
   patch:file://{PN}-0.10.29_avidemux_only_send_pts_on_keyframe.patch
   make:install:DESTDIR=PKDIR
 ;
 gst_plugins_bad
-  0.10.22.2
+  0.10.22.3
   {PN}-{PV}
   extract:http://gstreamer.freedesktop.org/src/{PN}/pre/{PN}-{PV}.tar.bz2
   patch:file://{PN}-0.10.22-mpegtsdemux_remove_bluray_pgs_detection.diff
@@ -1104,13 +1118,13 @@ gst_plugins_bad
   make:install:DESTDIR=PKDIR
 ;
 gst_plugins_ugly
-  0.10.18.2
+  0.10.18.3
   {PN}-{PV}
   extract:http://gstreamer.freedesktop.org/src/{PN}/pre/{PN}-{PV}.tar.bz2
   make:install:DESTDIR=PKDIR
 ;
 gst_ffmpeg
-  0.10.13
+  0.11.2
   {PN}-{PV}
   extract:http://gstreamer.freedesktop.org/src/{PN}/{PN}-{PV}.tar.bz2
   patch:file://{PN}-0.10.12_lower_rank.patch

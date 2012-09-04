@@ -30,7 +30,7 @@ $(DEPDIR)/libz.do_compile: $(DEPDIR)/libz.do_prepare
 		./configure \
 			--prefix=/usr \
 			--shared && \
-		$(MAKE) all
+		$(MAKE) all libz.a AR="$(target)-ar " CFLAGS="-fpic -O2"
 	touch $@
 
 $(DEPDIR)/min-libz $(DEPDIR)/std-libz $(DEPDIR)/max-libz \
@@ -42,6 +42,67 @@ $(DEPDIR)/%libz: $(DEPDIR)/libz.do_compile
 	$(tocdk_build)
 	$(toflash_build)
 #	@DISTCLEANUP_libz@
+	[ "x$*" = "x" ] && touch $@ || true
+
+#
+# libffi
+#
+DESCRIPTION_libffi = "libffi"
+
+FILES_libffi = \
+/usr/lib/*.so*
+
+$(DEPDIR)/libffi.do_prepare: bootstrap @DEPENDS_libffi@
+	@PREPARE_libffi@
+	touch $@
+
+$(DEPDIR)/libffi.do_compile: $(DEPDIR)/libffi.do_prepare
+	cd @DIR_libffi@ && \
+		$(BUILDENV) \
+		./configure \
+			--build=$(build) \
+			--host=$(target) \
+			--prefix=/usr && \
+		$(MAKE)
+	touch $@
+
+$(DEPDIR)/min-libffi $(DEPDIR)/std-libffi $(DEPDIR)/max-libffi \
+$(DEPDIR)/libffi: \
+$(DEPDIR)/%libffi: $(DEPDIR)/libffi.do_compile
+	cd @DIR_libffi@ && \
+		@INSTALL_libffi@
+#	@DISTCLEANUP_libffi@
+	[ "x$*" = "x" ] && touch $@ || true
+
+#
+# pkg
+#
+DESCRIPTION_pkg = "pkg"
+
+FILES_pkg = \
+/usr/lib/*
+
+$(DEPDIR)/pkg.do_prepare: bootstrap @DEPENDS_pkg@
+	@PREPARE_pkg@
+	touch $@
+
+$(DEPDIR)/pkg.do_compile: $(DEPDIR)/pkg.do_prepare
+	cd @DIR_pkg@ && \
+		$(BUILDENV) \
+		./configure \
+			--build=$(build) \
+			--host=$(target) \
+			--prefix=/usr \
+			--with-internal-glib && \
+		$(MAKE) all
+	touch $@
+
+$(DEPDIR)/min-pkg $(DEPDIR)/std-pkg $(DEPDIR)/max-pkg \
+$(DEPDIR)/pkg: \
+$(DEPDIR)/%pkg: $(DEPDIR)/pkg.do_compile
+	cd @DIR_pkg@ && \
+		@INSTALL_pkg@
+#	@DISTCLEANUP_pkg@
 	[ "x$*" = "x" ] && touch $@ || true
 
 #
@@ -644,9 +705,10 @@ $(DEPDIR)/libvorbisidec: $(DEPDIR)/libvorbisidec.do_compile
 DESCRIPTION_glib2 = "libglib2"
 
 FILES_glib2 = \
-/usr/lib/*.so*
+/usr/lib/*.so* \
+/usr/include/*
 
-$(DEPDIR)/glib2.do_prepare: bootstrap libz @DEPENDS_glib2@
+$(DEPDIR)/glib2.do_prepare: bootstrap libz libffi @DEPENDS_glib2@
 	@PREPARE_glib2@
 	touch $@
 

@@ -1,0 +1,81 @@
+diff -Naupr glib-2.33.8.orig/configure.ac glib-2.33.8/configure.ac
+--- glib-2.33.8.orig/configure.ac	2011-03-16 13:08:12.571940140 +0100
++++ glib-2.33.8/configure.ac	2011-03-16 13:10:17.606937157 +0100
+@@ -2372,6 +2372,12 @@ if test x"$GCC" = xyes; then
+   sparc*|alpha*|powerpc*|ia64)
+     glib_memory_barrier_needed=yes
+     ;;
++  sh*)
++   AC_MSG_RESULT([sh4])
++   AC_DEFINE_UNQUOTED(G_ATOMIC_SH4, 1,
++                      [SH4 atomic implementation])
++   glib_memory_barrier_needed=yes
++   ;;
+   *)
+     glib_memory_barrier_needed=yes
+     ;;
+#diff -Naupr glib-2.33.8.orig/gobject/gclosure.c glib-2.33.8/gobject/gclosure.c
+#--- glib-2.33.8.orig/gobject/gclosure.c	2011-03-16 13:08:12.690939105 +0100
+#+++ glib-2.33.8/gobject/gclosure.c	2011-03-16 13:11:28.624938122 +0100
+#@@ -26,7 +26,7 @@ g_atomic_int_add (volatile gint G_GNUC_M
+#  
+# #include <string.h>
+# 
+#-#include <ffi.h>
+#+ 
+# 
+# #include "gclosure.h"
+# #include "gboxed.h"
+diff -Naupr glib-2.33.8.orig/m4macros/Makefile.am glib-2.33.8/m4macros/Makefile.am
+--- glib-2.33.8.orig/m4macros/Makefile.am	2011-03-16 13:13:08.040938732 +0100
++++ glib-2.33.8/m4macros/Makefile.am	2011-03-16 13:15:38.204935573 +0100
+@@ -1,6 +1,6 @@
+ include $(top_srcdir)/Makefile.decl
+ 
+-installed_m4= glib-2.0.m4 glib-gettext.m4 gsettings.m4
++installed_m4= glib-2.0.m4 glib-gettext.m4 gsettings.m4 gtk-doc.m4
+ 
+ EXTRA_DIST+=$(installed_m4)
+ 
+diff -Naupr glib-2.33.8.orig/configure.ac glib-2.33.8/configure.ac
+--- glib-2.33.8.orig/configure.ac	2011-03-16 13:25:14.304939388 +0100
++++ glib-2.33.8/configure.ac	2011-03-16 13:26:06.045939448 +0100
+@@ -2737,7 +2737,7 @@ if test $cross_compiling = yes; then
+ 
+   AC_PATH_PROG(GLIB_COMPILE_SCHEMAS, glib-compile-schemas, no)
+   if test x$GLIB_COMPILE_SCHEMAS = xno; then
+-    AC_MSG_ERROR(Could not find a glib-compile-schemas in your PATH)
++    AC_MSG_WARN(Could not find a glib-compile-schemas in your PATH)
+   fi
+ fi
+ 
+diff -Naupr glib-2.33.8/configure.ac.orig glib-2.33.8/configure.ac
+--- glib-2.33.8/configure.ac.orig	2011-03-29 17:41:07.000000000 +0100
++++ glib-2.33.8/configure.ac	2011-03-29 17:42:12.000000000 +0100
+@@ -2381,6 +2381,12 @@
+                       [SH4 atomic implementation])
+    glib_memory_barrier_needed=yes
+    ;;
++  st2[[0-9]][[0-9]]*)
++   AC_MSG_RESULT([st200])
++   AC_DEFINE_UNQUOTED(G_ATOMIC_ST200, 1,
++                      [st200 atomic implementation])
++   glib_memory_barrier_needed=yes
++   ;;
+   *)
+     AC_MSG_RESULT([none])
+     glib_memory_barrier_needed=yes
+
+diff -Naupr glib-2.28.3/glib/gatomic.c.orig glib-2.28.3/glib/gatomic.c
+--- glib-2.28.3/glib/gatomic.c.orig	2011-03-29 17:40:00.000000000 +0100
++++ glib-2.28.3/glib/gatomic.c	2011-03-29 17:40:40.000000000 +0100
+@@ -467,7 +467,7 @@
+ #elif defined (G_PLATFORM_WIN32)
+ 
+ #include <windows.h>
+-#if !defined(_M_AMD64) && !defined (_M_IA64) && !defined(_M_X64)
++#if !defined(_M_AMD64) && !defined (_M_IA64) && !defined(_M_X64) && !defined(G_ATOMIC_ST200)
+ #define InterlockedAnd _InterlockedAnd
+ #define InterlockedOr _InterlockedOr
+ #define InterlockedXor _InterlockedXor
+ 
