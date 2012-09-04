@@ -51,7 +51,7 @@ static short paramDebug = 0;
 #define TAGDEBUG "[aotom] "
 
 #define dprintk(level, x...) do { \
-if ((paramDebug) && (paramDebug > level)) printk(TAGDEBUG x); \
+if ((paramDebug) && (paramDebug >= level)) printk(TAGDEBUG x); \
 } while (0)
 
 #define INVALID_KEY    	-1
@@ -336,8 +336,8 @@ static ssize_t AOTOMdev_write(struct file *filp, const char *buff, size_t len, l
 
 	if (minor == -1)
 	{
-		printk("Error Bad Minor\n");
-		return -1; //FIXME
+		dprintk(0, "Error Bad Minor\n");
+		return -ENODEV;
 	}
 
 	dprintk(1, "minor = %d\n", minor);
@@ -345,27 +345,16 @@ static ssize_t AOTOMdev_write(struct file *filp, const char *buff, size_t len, l
 	if (minor == FRONTPANEL_MINOR_RC)
 		return -EOPNOTSUPP;
 
-	kernel_buf = kmalloc(len, GFP_KERNEL);
-
-	if (kernel_buf == NULL)
-	{
-	   printk("%s return no mem<\n", __func__);
-	   return -ENOMEM;
-	}
-	copy_from_user(kernel_buf, buff, len);
-
 	if(down_interruptible (&write_sem))
-      return -ERESTARTSYS;
+		return -ERESTARTSYS;
 
 	data.length = len;
 	if (data.length > VFD_DATA_LEN)
 		data.length = VFD_DATA_LEN;
 
-	if (kernel_buf[len-1] == '\n')
-	{
-	  kernel_buf[len-1] = 0;
-	  data.length--;
-	}
+	// get rid of trailing endline. could be if echo command used
+	if ((data.length > 0) && (buff[data.length - 1] == '\n'))
+		data.length--;
 
 	if(data.length <0)
 	{
@@ -374,11 +363,11 @@ static ssize_t AOTOMdev_write(struct file *filp, const char *buff, size_t len, l
 	}
 	else
 	{
-	  memcpy(data.data,kernel_buf,data.length);
-	  res=run_draw_thread(&data);
+	  if (copy_from_user(data.data,buff,data.length))
+		res = -EFAULT;
+	  else
+		res=run_draw_thread(&data);
 	}
-
-	kfree(kernel_buf);
 
 	up(&write_sem);
 
@@ -482,8 +471,8 @@ int AOTOMdev_open(struct inode *inode, struct file *filp)
 
   	if (FrontPanelOpen[minor].fp != NULL)
   	{
-		printk("EUSER\n");
-    		return -EUSERS;
+		dprintk(0, "EUSER\n");
+		return -EUSERS;
   	}
   	FrontPanelOpen[minor].fp = filp;
   	FrontPanelOpen[minor].read = 0;
@@ -504,7 +493,7 @@ int AOTOMdev_close(struct inode *inode, struct file *filp)
 
   	if (FrontPanelOpen[minor].fp == NULL)
 	{
-		printk("EUSER\n");
+		dprintk(0, "EUSER\n");
 		return -EUSERS;
   	}
 	FrontPanelOpen[minor].fp = NULL;
@@ -513,6 +502,8 @@ int AOTOMdev_close(struct inode *inode, struct file *filp)
 	dprintk(5, "%s <\n", __func__);
 	return 0;
 }
+
+static struct vfd_ioctl_data vfd_data;
 
 static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int cmd, unsigned long arg)
 {
@@ -541,8 +532,10 @@ static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int c
 		break;
 	case VFDICONDISPLAYONOFF:
 	{
-	 	//struct vfd_ioctl_data *data = (struct vfd_ioctl_data *) arg;
-		//res = aotomSetIcon(aotom->u.icon.icon_nr, aotom->u.icon.on);
+#if defined(SPARK7162)
+	 struct vfd_ioctl_data *data = (struct vfd_ioctl_data *) arg;
+	 res = aotomSetIcon(aotom->u.icon.icon_nr, aotom->u.icon.on);
+#endif
 #if defined(SPARK) || defined(SPARK7162)
 		switch (aotom->u.icon.icon_nr)
 		{
@@ -565,7 +558,6 @@ static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int c
 				break;
 		}
 #endif
-
 		mode = 0;
 		break;
 	}
@@ -623,14 +615,13 @@ static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int c
 	case VFDDISPLAYCHARS:
 		if (mode == 0)
 		{
-	 	  struct vfd_ioctl_data *data = (struct vfd_ioctl_data *) arg;
-		  if(data->length <0)
-	            {
-	              res = -1;
-	              dprintk(2, "empty string\n");
-	            }
-		    else
-		     res = run_draw_thread(data);
+			if (copy_from_user(&vfd_data, (void *) arg, sizeof(vfd_data)))
+				return -EFAULT;
+			if (vfd_data.length > sizeof(vfd_data.data))
+				vfd_data.length = sizeof(vfd_data.data);
+			while ((vfd_data.length > 0) && (vfd_data.data[vfd_data.length - 1 ] == '\n'))
+				vfd_data.length--;
+				res = run_draw_thread(&vfd_data);
 		} else
 		{
 			//not supported
@@ -640,12 +631,8 @@ static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int c
 	case VFDDISPLAYWRITEONOFF:
 		break;
 	case VFDDISPLAYCLR:
-		if(!thread_stop)
-		  kthread_stop(thread);
-		//wait thread stop
-		while(!thread_stop)
-		  {msleep(1);}
-		VFD_clr();
+		vfd_data.length = 0;
+		res = run_draw_thread(&vfd_data);
 		break;
 #if defined(SPARK)
 	case 0x5305:
@@ -654,7 +641,7 @@ static int AOTOMdev_ioctl(struct inode *Inode, struct file *File, unsigned int c
 	case 0x5401:
 		break;
 	default:
-		printk("VFD/AOTOM: unknown IOCTL 0x%x\n", cmd);
+		dprintk(0, "unknown IOCTL 0x%x\n", cmd);
 		mode = 0;
 		break;
 	}
@@ -768,7 +755,7 @@ static int button_input_open(struct input_dev *dev)
 {
 	if (down_interruptible(&button_sem))
 	{
-		printk("[BTN] ERROR workqueue already running\n");
+		dprintk(0, "[BTN] ERROR workqueue already running\n");
 		return 1;
 	}
 
