@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+if [ "$1" = configure ]; then
+  install-info --quiet \
+    --description="Grep searches on input for lines containing a match to a pattern." \
+    --section "General Commands" "General Commands" /usr/info/grep.info
+fi

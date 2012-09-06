@@ -1,0 +1,2833 @@
+--- grep-2.5.1.ds2.orig/debian/links
++++ grep-2.5.1.ds2/debian/links
+@@ -0,0 +1 @@
++usr/share/man/man1/grep.1.gz usr/share/man/man1/rgrep.1.gz
+--- grep-2.5.1.ds2.orig/debian/compat
++++ grep-2.5.1.ds2/debian/compat
+@@ -0,0 +1 @@
++4
+--- grep-2.5.1.ds2.orig/debian/changelog
++++ grep-2.5.1.ds2/debian/changelog
+@@ -0,0 +1,421 @@
++grep (2.5.1.ds2-6) unstable; urgency=low
++
++  * Added watch file. (Closes: #248733)
++  * grep didn't work with FIFOs, thanks to Bastian Kleineidam
++    <calvin@users.sourceforge.net> (Closes: #198846)
++
++ -- Santiago Ruano Rincón <santiago@debian.org>  Tue, 10 Oct 2006 00:41:50 -0500
++
++grep (2.5.1.ds2-5) unstable; urgency=low
++
++  * Fixed "fgrep : troubles with -w option", closes: #350775.
++    Patch thanks to Nicolas François <nicolas.francois@centraliens.net>.
++  * Set Standards-Version to 3.7.2.
++  * Changed co-maontainer's email address.
++
++ -- Anibal Monsalve Salazar <anibal@debian.org>  Thu, 18 May 2006 21:40:49 +1000
++
++grep (2.5.1.ds2-4) unstable; urgency=low
++
++  * Compiled with -O3 (Closes: #322416)
++    grep is 40 times slower on native amd64 than in a 32bit chroot
++  * Again, configure without-libpcre
++
++ -- Santiago Ruano Rincon <santiago@unicauca.edu.co>  Wed,  9 Nov 2005 17:50:00 -0500
++
++grep (2.5.1.ds2-3) unstable; urgency=low
++
++  * Compiled with libpcre3 to enable perl regular expressions. 
++    Closes: #203109: perl mode non-functional, should not be documented
++    Closes: #238237: -P option doesn't work.
++  * Closes: #190551: br0ken manpage: Uses 'Egrep' instead of 'egrep'.
++    Thanks to Marc Brockschmidt <marc@dch-faq.de>
++
++ -- Santiago Ruano Rincon <santiago@unicauca.edu.co>  Mon,  7 Nov 2005 03:40:13 -0500
++
++grep (2.5.1.ds2-2) unstable; urgency=low
++
++  * Patched 64-egf-speedup.patch with patch from Nicolas François
++    <nicolas.francois@centraliens.net>. Put 64-egf-speedup.patch,
++    65-dfa-optional.patch, 66-match_icase.patch and 67-w.patch back
++    in, closes: #181378, #206470, #224993.
++  * Fixed "minor documentation syntax error", closes: #240239,
++    #257900. Patches by Allard Hoeve <allard@byte.nl> and Derrick
++    'dman' Hudson <dman@dman13.dyndns.org>.
++  * Fixed "info page not in main info menu", closes: #284676,
++    #267718. Patches by Rui Tiago Cação Matos
++    <a28525@alunos.det.ua.pt> and Paul Brook <paul@nowt.org>.
++
++ -- Anibal Monsalve Salazar <anibal@debian.org>  Wed, 26 Oct 2005 19:14:35 +1000
++
++grep (2.5.1.ds2-1) unstable; urgency=low
++
++  * Removed 64-egf-speedup.patch, 65-dfa-optional.patch,
++    66-match_icase.patch and 67-w.patch from debian/patches,
++    closes: #329876.
++  * Removed grep.texi from upstream tarball, 50-rgrep-info.patch and
++    51-dircategory-info.patch from debian/patches, the GNU Free
++    Documentation License from debian/copyright and debian/fdl.txt,
++    closes: #281647.
++  * Fixed FSF postal address in debian/copyright.
++  * Fixed override disparity found in suite unstable:
++    grep: override says utils-required, .deb says base-required.
++
++ -- Anibal Monsalve Salazar <anibal@debian.org>  Mon, 26 Sep 2005 22:17:50 +1000
++
++grep (2.5.1.ds1-6) unstable; urgency=low
++
++  * 64-egf-speedup.patch, 65-dfa-optional.patch, 66-match_icase.patch,
++    67-w.patch speed up grep. Thanks to Nicolas FranÃ§ois
++    <nicolas.francois@centraliens.net> (Closes: #181378, #206470, #224993)
++  * Deleted the CVS directories
++
++ -- Santiago Ruano Rincon <santiago@unicauca.edu.co>  Sat, 10 Sep 2005 01:52:04 -0500
++
++grep (2.5.1.ds1-5) unstable; urgency=low
++
++  * New maintainer, closes: #316380.
++  * Updated standards version to 3.6.2.
++
++ -- Anibal Monsalve Salazar <anibal@debian.org>  Fri, 01 Jul 2005 08:29:42 +1000
++
++grep (2.5.1.ds1-4) unstable; urgency=high
++
++  * Add missing GFDL copyright statements (Closes: #274352)
++  * Acknowledge NMU (Closes #249245, #274352, #276209, #276202)
++
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Sun, 21 Nov 2004 02:02:02 -0500
++
++grep (2.5.1.ds1-3.2) unstable; urgency=low
++
++  * NMU to fix RC bugs
++  * 61-dfa.c-case_fold-charclass.patch: new patch by Fumitoshi UKAI
++    to fix case_fold match with characters in bracket in multibyte
++    locales (UTF-8, CJK, ...)
++    closes: Bug#249245
++  * 62-dfa.c-charclass-bracket.patch: new patch by Fumitoshi UKAI
++    to fix wrong match '[' against character class such as [[:space:]]
++    in multibyte locales (UTF-8, ...)
++    closes: Bug#274352
++  * 63-dfa.c-case_fold-range.patch: new patch by Fumitoshi UKAI
++    to fix case_fold match on [a-z] or [A-Z] in multibyte locales (UTF-8,.)
++    closes: Bug#276209
++
++ -- Fumitoshi UKAI <ukai@debian.or.jp>  Wed, 20 Oct 2004 02:19:35 +0900
++
++grep (2.5.1.ds1-3.1) unstable; urgency=low
++
++  * NMU to fix RC bug
++  * 60-dfa.c-case_fold.patch: new patch by Fumitoshi UKAI
++    to fix case_fold match on [:upper:] and [:lower:] in 
++    multibyte locales (UTF-8, CJK, ...)
++    closes: Bug#276202
++
++ -- Fumitoshi UKAI <ukai@debian.or.jp>  Tue, 19 Oct 2004 02:07:07 +0900
++
++grep (2.5.1.ds1-3) unstable; urgency=high
++
++  * configure without-libpcre (Closes: #237071)
++
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Tue, 03 Aug 2004 21:51:44 -0400
++
++grep (2.5.1.ds1-2) unstable; urgency=low
++
++  * Fixed pre-depends (Closes: #222655)
++
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Sun, 07 Dec 2003 18:09:00 -0400	
++
++grep (2.5.1.ds1-1) unstable; urgency=low
++  
++  * Fixed manpage typo (Closes: #207703)
++
++  * Makefile.in info patch (Closes: #218969)
++    - Thanks Andreas Metzler
++
++  * Fixed misspelled month in changelog.
++  
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Tue, 18 Nov 2003 01:02:03 -0400
++
++grep (2.5.1-7) unstable; urgency=low
++
++  * Jeff Bailey <jbailey@nisa.net>:
++    - Converted to cdbs
++
++ -- Jeff Bailey <jbailey@nisa.net>  Tue, 19 Aug 2003 01:07:31 -0400
++
++grep (2.5.1-6) unstable; urgency=low
++  
++  * Consolidated manpage patches
++   + Fixed line-buffering typo (Closes: #198947)
++   + Re-ordered options, perl regexp note (Closes: #203109)
++  
++  * Applied patch for bigfiles w/o newlines (Closes: #185208)
++    - Thanks Jim Meyering
++  
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Sun, 17 Aug 2003 00:10:00 -0500
++
++grep (2.5.1-5) unstable; urgency=low
++
++  * applied i18n patch for LSB test suite (Closes: #184884)
++  * fixed misspelling in manpage (Closes: #187477)
++  
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Sat, 29 Mar 2003 00:10:00 -0500
++
++grep (2.5.1-4) unstable; urgency=low
++  
++  * New Maintainer (thanks Robert and Clint)
++  * New uploader: Jeff Bailey <jbailey@nisa.net>
++  * Converted to CBS.
++
++  * Added rgrep documentation to manpage and info doc.
++  * Cleaned up copyright file.
++  * Added #!/bin/sh to rgrep.
++  * Added dircategory to grep.texi
++  
++ -- Ryan M. Golbeck <rmgolbeck@debian.org>  Mon, 17 Feb 2003 00:10:00 -0500
++
++grep (2.5.1-3) unstable; urgency=medium
++
++  * Document -z in the manpage.  closes: #183277.
++
++ -- Clint Adams <schizo@debian.org>  Mon, 10 Mar 2003 02:10:32 -0500
++
++grep (2.5.1-2) unstable; urgency=low
++
++  * Call install with INSTALL_PROGRAM, not initial make. 
++
++ -- Clint Adams <schizo@debian.org>  Sun, 16 Feb 2003 00:07:50 -0500
++
++grep (2.5.1-1) unstable; urgency=low
++
++  * Hijack. 
++  * Update config.{guess,sub}.  closes: #174898, #179702.
++  * New upstream version.  closes: #152204.
++  * Update to Standards-Version 3.5.8.
++  * Support noopt and nostrip DEB_BUILD_OPTIONS.
++  * Add texinfo to Build-Depends.
++
++ -- Clint Adams <schizo@debian.org>  Thu, 13 Feb 2003 18:49:35 -0500
++
++grep (2.4.2-3.1) unstable; urgency=low
++
++  * NMU
++  * doc/grep.1:
++    - re-word description of exit codes. (Closes: #158134)
++    - apply rgrep patch--thanks, Martin Michlmayr! (Closes: #127438)
++  * doc/grep.info:
++    - fix missing colon in character class example (Closes: #173882)
++  * debian/rules:
++    - put only grep in /bin, fgrep and egrep in /usr/bin. (Closes: #93193)
++    - clean up po/*.gmo so that it is possible to rebuild without
++      dpkg-source aborting with "unrepresentable changes to binary files"
++      errors. (Closes: #142206)
++    - apply patch to remove bashisms (Closes: #172524)
++  * debian/control: add more descriptive paragraph to description
++    (Closes: #45943)
++  * debian/copyright: changed to reflect current maintainer.
++    (Closes: #156479)
++  * debian/postinst: no longer need to set /usr/doc link.
++
++ -- Hwei Sheng Teoh <hsteoh@debian.org>  Tue, 10 Dec 2002 08:46:16 -0500
++
++grep (2.4.2-3) frozen unstable; urgency=low
++
++  * Updated dutch translation (Closes: #111313)
++  * Fixed documentation (Closes: #69083, #71305)
++  * Fixed hurd build failure (Closes: #105435)
++
++ -- Robert van der Meulen <rvdm@debian.org>  Wed, 28 Nov 2001 17:32:08 +0100
++
++grep (2.4.2-2) frozen unstable; urgency=low
++
++  * New maintainer
++  * Replaced config.sub and config.guess for newer ones. (Closes: #98034)
++  * Fixed french language bug. (Closes: #95349) 
++
++ -- Robert van der Meulen <rvdm@debian.org>  Mon, 25 Jun 2001 14:31:38 +0200
++
++grep (2.4.2-1) frozen unstable; urgency=low
++
++  * New upstream release. This is only a translation-update and bugfix
++    release, there is no new code (besides the bugfixes that is)
++  * Fix location of GPL (lintian)
++  * add -isp option to dpkg-gencontrol (lintian)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Sun,  2 Apr 2000 17:57:56 +0200
++
++grep (2.4-2) frozen unstable; urgency=low
++
++  * Fix grep-call in rgrep, Closes: Bug# 52751
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Sat, 22 Jan 2000 15:06:01 +0100
++
++grep (2.4-1) unstable; urgency=low
++
++  * New upstream version
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Wed,  8 Dec 1999 02:05:48 +0100
++ 
++grep (2.3-8) unstable; urgency=low
++
++  * Add a rgrep-script and add Conflicts and Provides for it
++  * Bump standards-version to 3.1.0
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 23 Nov 1999 22:12:18 +0100
++
++grep (2.3-7) unstable; urgency=low
++
++  * Use different approach to get things in /usr/share
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue,  5 Oct 1999 18:48:54 +0200
++
++grep (2.3-6) unstable; urgency=low
++
++  * Set datadir to /usr/share, Closes: Bug# 46632
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue,  5 Oct 1999 04:08:09 +0200
++
++grep (2.3-5) unstable; urgency=low
++
++  * Change "Debian/GNU Linux" to "Debian GNU/Linux" in copyright
++  * Change to FHS 2.1(pre2)
++  * No longer generate md5sums
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Wed,  8 Sep 1999 02:16:55 +0200
++
++grep (2.3-4) unstable; urgency=low
++
++  * Remove debian/files and debian/substvars on clean (Bug# 38620)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Mon, 31 May 1999 13:31:59 +0200
++
++grep (2.3-3) unstable; urgency=low
++
++  * Don't clobber NEWS with ChangeLog (Bug# 33917)
++  * Register info-documentation with install-info (Bug# 33917)
++  * Generally try to preserve timestamps
++  * Upgrade standards-version to 2.5.1
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Wed, 26 May 1999 00:36:51 +0200
++
++grep (2.3-2) unstable; urgency=low
++
++  * Make egrep and grep seperate binaries again, since they don't check
++    argv[0] anymore
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Thu, 25 Feb 1999 02:59:21 +0100
++
++grep (2.3-1) unstable; urgency=low
++
++  * New upstream version
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 23 Feb 1999 02:16:01 +0100
++ 
++grep (2.2-1) unstable; urgency=low
++
++  * New upstream version
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Mon, 27 Apr 1998 12:13:04 +0200
++
++grep (2.1-7) frozen unstable; urgency=high
++
++  * Fix wrong patch for Bug# 20284. Note to self: don't trust
++    received patches! (Bug# 20573, 20592, 20541)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Fri,  3 Apr 1998 12:05:42 +0200
++
++grep (2.1-6) frozen unstable; urgency=low
++
++  * Complain about non-existant files (Bug# 20283)
++  * Return with errorcode 2 when file cannot be opened (Bug# 20284)
++  * Fixed syntax error in manpage (Bug# 20509)
++  * Changed manpage: a pattern is a legal parameter (Bug# 20509)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Wed,  1 Apr 1998 14:07:00 +0200
++
++grep (2.1-5) unstable; urgency=low
++
++  * Fixed type in description (Bug# 18945)
++  * Now standards-version 2.4.0.0
++  * Re-instate [ef]grep.1 since some man-programs seem to
++    need them BBug# 16445)
++  * GPL is not compressed (lintian)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Sun, 15 Mar 1998 23:19:37 +0100
++
++grep (2.1-4) unstable; urgency=low
++
++  * Hardlink [ef]grep to grep binary again
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Mon, 29 Dec 1997 02:06:26 +0100
++
++grep (2.1-3) unstable; urgency=low
++
++  * Fixed incorrect md5sums
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 16 Dec 1997 17:17:57 +0100
++
++grep (2.1-2) unstable; urgency=low
++
++  * Fix redundant manpages (Bug# 14570)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Fri,  7 Nov 1997 18:03:39 +0100
++
++grep (2.1-1) unstable; urgency=low
++
++  * New upstream version (Bug# 14219)
++  * Fixed spelling error in copyright
++  * Fixed compilation flags to comply with policy
++  * Pristine sources
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Thu, 25 Sep 1997 12:19:59 +0200
++
++grep (2.0-12) unstable; urgency=low
++
++  * Rename upstream change to changelog
++  * Added md5sums to .deb file
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Mon, 14 Jul 1997 01:17:15 +0200
++
++grep (2.0-11) unstable; urgency=low
++
++  * Removed symlinks for egrep.1 and fgrep.1 (Bug# 7814)
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 11 Mar 1997 00:20:25 +0100
++
++grep (2.0-10) unstable; urgency=low
++
++  * Now conforms to policy manual version 2.1.2.2
++  * Fixed typo in debian/rules (Bug# 7665)
++
++ -- Wichert Akkerman <wakkerma@wi.leidenuniv.nl>  Thu, 27 Feb 1997 02:01:53 +0100
++
++grep (2.0-9) frozen unstable; urgency=low
++
++  * Corrected priority in debian controlfile.
++
++ -- Wichert Akkerman <wakkerma@wi.leidenuniv.nl>  Tue, 12 Nov 1996 23:36:10 +0100
++
++grep (2.0-8) stable; urgency=low
++
++  * Made copyright a symlink to /usr/doc/copyright/GPL
++  * Compress man-pages
++  * Renamed debian changelog to changelog.Debian
++
++ -- Wichert Akkerman <wakkerma@wi.leidenuniv.nl>  Sat, 26 Oct 1996 18:43:57 +0200
++
++grep (2.0-7) stable unstable; urgency=low
++
++  * Moved to new packaging format
++
++ -- Wichert Akkerman <wakkerma@wi.leidenuniv.nl>  Sat, 21 Sep 1996 17:24:52 +0200
++
++grep (2.0-6); priority=LOW
++
++  * Revamped debian files
++  * Disable mmap-code since mmap does not work on files from the
++    proc-filesystem. (Temporary fix, still looking for a better
++	solution).
++  * new maintainer: Wichert Akkerman <wakkerma@wi.leidenuniv.nl>
++
++ -- Wichert Akkerman <wakkerma@wi.leidenuniv.nl>,Mon Jul 29 18:38:06 MET DST 1996
+--- grep-2.5.1.ds2.orig/debian/watch
++++ grep-2.5.1.ds2/debian/watch
+@@ -0,0 +1,2 @@
++version=2
++http://ftp.gnu.org/gnu/grep/grep-(.*)\.tar\.gz
+--- grep-2.5.1.ds2.orig/debian/rgrep
++++ grep-2.5.1.ds2/debian/rgrep
+@@ -0,0 +1,4 @@
++#!/bin/sh
++
++exec grep -r "$@"
++
+--- grep-2.5.1.ds2.orig/debian/control
++++ grep-2.5.1.ds2/debian/control
+@@ -0,0 +1,27 @@
++Source: grep
++Section: utils
++Priority: required
++Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
++Uploaders: Santiago Ruano Rincón <santiago@debian.org>
++Standards-Version: 3.7.2
++Build-Depends: gettext, cdbs (>= 0.4.5.3), debhelper (>= 4.1.0)
++
++Package: grep
++Architecture: any
++Essential: yes
++Pre-Depends: ${shlibs:Depends}
++Conflicts: rgrep
++Provides: rgrep
++Description: GNU grep, egrep and fgrep
++ 'grep' is a utility to search for text in files; it can be used from the
++ command line or in scripts.  Even if you don't want to use it, other packages
++ on your system probably will.
++ .
++ The GNU family of grep utilities may be the "fastest grep in the west".
++ GNU grep is based on a fast lazy-state deterministic matcher (about
++ twice as fast as stock Unix egrep) hybridized with a Boyer-Moore-Gosper
++ search for a fixed string that eliminates impossible text from being
++ considered by the full regexp matcher without necessarily having to
++ look at every character. The result is typically many times faster
++ than Unix grep or egrep. (Regular expressions containing backreferencing
++ will run more slowly, however.)
+--- grep-2.5.1.ds2.orig/debian/prerm
++++ grep-2.5.1.ds2/debian/prerm
+@@ -0,0 +1,5 @@
++#!/bin/sh -e
++
++if [ "$1" = "remove" -o "$1" = "upgrade" ]; then
++  install-info --remove --quiet /usr/share/info/grep.info.gz
++fi
+--- grep-2.5.1.ds2.orig/debian/copyright
++++ grep-2.5.1.ds2/debian/copyright
+@@ -0,0 +1,30 @@
++This is the Debian GNU/Linux prepackaged version of the grep program.
++Currently Anibal Monsalve Salazar <anibal@debian.org> maintains the
++Debian GNU/Linux version of grep.
++
++Robert van der Meulen <rvdm@debian.org> and
++Ryan M. Golbeck <rmgolbeck@debian.org>
++were the previous maintainers.
++
++This package was created from the grep sources as found on the GNU
++mirrors.  Grep is copyrighted as described below:
++
++   Copyright 1992, 1997-1999, 2000 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2, or (at your option)
++   any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++   02110-1301, USA.
++
++On a Debian system you can find a copy of this license in
++/usr/share/common-licenses/GPL.
+--- grep-2.5.1.ds2.orig/debian/rules
++++ grep-2.5.1.ds2/debian/rules
+@@ -0,0 +1,12 @@
++#!/usr/bin/make -f
++
++DEB_TAR_SRCDIR=grep-2.5.1
++include /usr/share/cdbs/1/rules/debhelper.mk
++include /usr/share/cdbs/1/rules/simple-patchsys.mk
++include /usr/share/cdbs/1/class/autotools.mk
++include /usr/share/cdbs/1/rules/tarball.mk
++
++DEB_MAKE_CHECK_TARGET = 
++#DEB_MAKE_CHECK_TARGET = check
++
++DEB_CONFIGURE_EXTRA_FLAGS := CFLAGS=-O3 --exec-prefix=/ --disable-perl-regexp
+--- grep-2.5.1.ds2.orig/debian/info
++++ grep-2.5.1.ds2/debian/info
+@@ -0,0 +1 @@
++doc/grep.info*
+--- grep-2.5.1.ds2.orig/debian/install
++++ grep-2.5.1.ds2/debian/install
+@@ -0,0 +1 @@
++debian/rgrep usr/bin
+--- grep-2.5.1.ds2.orig/debian/preinst
++++ grep-2.5.1.ds2/debian/preinst
+@@ -0,0 +1,7 @@
++#!/bin/sh
++
++set -e
++
++dpkg --assert-support-predepends
++
++#DEBHELPER#
+--- grep-2.5.1.ds2.orig/debian/dirs
++++ grep-2.5.1.ds2/debian/dirs
+@@ -0,0 +1,3 @@
++usr/bin
++usr/share
++bin
+--- grep-2.5.1.ds2.orig/debian/patches/55-doc-makefile.patch
++++ grep-2.5.1.ds2/debian/patches/55-doc-makefile.patch
+@@ -0,0 +1,20 @@
++--- doc/Makefile.in.orig	2003-10-31 17:25:51.000000000 +0100
+++++ doc/Makefile.in	2003-10-31 17:26:23.000000000 +0100
++@@ -133,7 +133,7 @@
++ uninstall-info-am:
++ 	$(PRE_UNINSTALL)
++ 	@if (install-info --version && \
++-	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
+++	     install-info --version 2>&1 | sed 1q | fgrep -i -v debian) >/dev/null 2>&1; then \
++ 	  list='$(INFO_DEPS)'; \
++ 	  for file in $$list; do \
++ 	    echo " install-info --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$file"; \
++@@ -273,7 +273,7 @@
++ 	done
++ 	@$(POST_INSTALL)
++ 	@if (install-info --version && \
++-	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
+++	     install-info --version 2>&1 | sed 1q | fgrep -i -v debian) >/dev/null 2>&1; then \
++ 	  list='$(INFO_DEPS)'; \
++ 	  for file in $$list; do \
++ 	    echo " install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$file";\
+--- grep-2.5.1.ds2.orig/debian/patches/63-dfa.c-case_fold-range.patch
++++ grep-2.5.1.ds2/debian/patches/63-dfa.c-case_fold-range.patch
+@@ -0,0 +1,32 @@
++--- ./src/dfa.c.orig	2004-10-20 02:13:43.000000000 +0900
+++++ ./src/dfa.c	2004-10-20 02:14:14.000000000 +0900
++@@ -658,6 +658,29 @@
++ 	  REALLOC_IF_NECESSARY(work_mbc->range_ends, wchar_t,
++ 			       range_ends_al, work_mbc->nranges + 1);
++ 	  work_mbc->range_ends[work_mbc->nranges++] = (wchar_t)wc2;
+++	  if (case_fold 
+++	      && (iswlower((wint_t)wc) || iswupper((wint_t)wc))
+++	      && (iswlower((wint_t)wc2) || iswupper((wint_t)wc2))) {
+++	    wint_t altcase;
+++	    altcase = wc;
+++	    if (iswlower((wint_t)wc))
+++	      altcase = towupper((wint_t)wc);
+++	    else
+++	      altcase = towlower((wint_t)wc);
+++	    REALLOC_IF_NECESSARY(work_mbc->range_sts, wchar_t,
+++				 range_sts_al, work_mbc->nranges + 1);
+++	    work_mbc->range_sts[work_mbc->nranges] = (wchar_t)altcase;
+++	    
+++	    altcase = wc2;
+++	    if (iswlower((wint_t)wc2))
+++	      altcase = towupper((wint_t)wc2);
+++	    else
+++	      altcase = towlower((wint_t)wc2);
+++	    REALLOC_IF_NECESSARY(work_mbc->range_ends, wchar_t,
+++				 range_ends_al, work_mbc->nranges + 1);
+++	    work_mbc->range_ends[work_mbc->nranges++] = (wchar_t)altcase;
+++	    
+++	  }
++ 	}
++       else if (wc != WEOF)
++ 	/* build normal characters.  */
+--- grep-2.5.1.ds2.orig/debian/patches/64-egf-speedup.patch
++++ grep-2.5.1.ds2/debian/patches/64-egf-speedup.patch
+@@ -0,0 +1,856 @@
++--- src/search.c.orig	2005-09-06 20:53:35.000000000 +0200
+++++ src/search.c	2005-09-06 22:12:36.000000000 +0200
++@@ -18,9 +18,13 @@
++ 
++ /* Written August 1992 by Mike Haertel. */
++ 
+++#ifndef _GNU_SOURCE
+++# define _GNU_SOURCE 1
+++#endif
++ #ifdef HAVE_CONFIG_H
++ # include <config.h>
++ #endif
+++#include <assert.h>
++ #include <sys/types.h>
++ #if defined HAVE_WCTYPE_H && defined HAVE_WCHAR_H && defined HAVE_MBRTOWC
++ /* We can handle multibyte string.  */
++@@ -39,6 +43,9 @@
++ #ifdef HAVE_LIBPCRE
++ # include <pcre.h>
++ #endif
+++#ifdef HAVE_LANGINFO_CODESET
+++# include <langinfo.h>
+++#endif
++ 
++ #define NCHAR (UCHAR_MAX + 1)
++ 
++@@ -70,9 +77,10 @@
++    call the regexp matcher at all. */
++ static int kwset_exact_matches;
++ 
++-#if defined(MBS_SUPPORT)
++-static char* check_multibyte_string PARAMS ((char const *buf, size_t size));
++-#endif
+++/* UTF-8 encoding allows some optimizations that we can't otherwise
+++   assume in a multibyte encoding. */
+++static int using_utf8;
+++
++ static void kwsinit PARAMS ((void));
++ static void kwsmusts PARAMS ((void));
++ static void Gcompile PARAMS ((char const *, size_t));
++@@ -84,6 +92,15 @@
++ static size_t Pexecute PARAMS ((char const *, size_t, size_t *, int));
++ 
++ void
+++check_utf8 (void)
+++{
+++#ifdef HAVE_LANGINFO_CODESET
+++  if (strcmp (nl_langinfo (CODESET), "UTF-8") == 0)
+++    using_utf8 = 1;
+++#endif
+++}
+++
+++void
++ dfaerror (char const *mesg)
++ {
++   error (2, 0, mesg);
++@@ -141,47 +158,6 @@
++     }
++ }
++ 
++-#ifdef MBS_SUPPORT
++-/* This function allocate the array which correspond to "buf".
++-   Then this check multibyte string and mark on the positions which
++-   are not singlebyte character nor the first byte of a multibyte
++-   character.  Caller must free the array.  */
++-static char*
++-check_multibyte_string(char const *buf, size_t size)
++-{
++-  char *mb_properties = malloc(size);
++-  mbstate_t cur_state;
++-  wchar_t wc;
++-  int i;
++-  memset(&cur_state, 0, sizeof(mbstate_t));
++-  memset(mb_properties, 0, sizeof(char)*size);
++-  for (i = 0; i < size ;)
++-    {
++-      size_t mbclen;
++-      mbclen = mbrtowc(&wc, buf + i, size - i, &cur_state);
++-
++-      if (mbclen == (size_t) -1 || mbclen == (size_t) -2 || mbclen == 0)
++-	{
++-	  /* An invalid sequence, or a truncated multibyte character.
++-	     We treat it as a singlebyte character.  */
++-	  mbclen = 1;
++-	}
++-      else if (match_icase)
++-	{
++-	  if (iswupper((wint_t)wc))
++-	    {
++-	      wc = towlower((wint_t)wc);
++-	      wcrtomb(buf + i, wc, &cur_state);
++-	    }
++-	}
++-      mb_properties[i] = mbclen;
++-      i += mbclen;
++-    }
++-
++-  return mb_properties;
++-}
++-#endif
++-
++ static void
++ Gcompile (char const *pattern, size_t size)
++ {
++@@ -190,6 +166,7 @@
++   size_t total = size;
++   char const *motif = pattern;
++ 
+++  check_utf8 ();
++   re_set_syntax (RE_SYNTAX_GREP | RE_HAT_LISTS_NOT_NEWLINE);
++   dfasyntax (RE_SYNTAX_GREP | RE_HAT_LISTS_NOT_NEWLINE, match_icase, eolbyte);
++ 
++@@ -266,6 +243,7 @@
++   size_t total = size;
++   char const *motif = pattern;
++ 
+++  check_utf8 ();
++   if (strcmp (matcher, "awk") == 0)
++     {
++       re_set_syntax (RE_SYNTAX_AWK);
++@@ -350,18 +328,9 @@
++   struct kwsmatch kwsm;
++   size_t i, ret_val;
++ #ifdef MBS_SUPPORT
++-  char *mb_properties = NULL;
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        {
++-          char *case_buf = malloc(size);
++-          memcpy(case_buf, buf, size);
++-          buf = case_buf;
++-        }
++-      if (kwset)
++-        mb_properties = check_multibyte_string(buf, size);
++-    }
+++  int mb_cur_max = MB_CUR_MAX;
+++  mbstate_t mbs;
+++  memset (&mbs, '\0', sizeof (mbstate_t));
++ #endif /* MBS_SUPPORT */
++ 
++   buflim = buf + size;
++@@ -373,31 +342,63 @@
++ 	  if (kwset)
++ 	    {
++ 	      /* Find a possible match using the KWset matcher. */
++-	      size_t offset = kwsexec (kwset, beg, buflim - beg, &kwsm);
++-	      if (offset == (size_t) -1)
++-		{
++ #ifdef MBS_SUPPORT
++-		  if (MB_CUR_MAX > 1)
++-                    {
++-                      if (match_icase)
++-                        free ((char*)buf);
++-                      free(mb_properties);
++-                    }
+++	      size_t bytes_left = 0;
++ #endif /* MBS_SUPPORT */
++-		  return (size_t)-1;
+++	      size_t offset;
+++#ifdef MBS_SUPPORT
+++	      /* kwsexec doesn't work with match_icase and multibyte input. */
+++	      if (match_icase && mb_cur_max > 1)
+++		/* Avoid kwset */
+++		offset = 0;
+++	      else
+++#endif /* MBS_SUPPORT */
+++	      offset = kwsexec (kwset, beg, buflim - beg, &kwsm);
+++	      if (offset == (size_t) -1)
+++	        return (size_t)-1;;
+++#ifdef MBS_SUPPORT
+++	      if (mb_cur_max > 1 && !using_utf8)
+++		{
+++		  bytes_left = offset;
+++		  while (bytes_left)
+++		    {
+++		      size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++		      if (mlen == (size_t) -1 || mlen == 0)
+++			{
+++			  /* Incomplete character: treat as single-byte. */
+++			  memset (&mbs, '\0', sizeof (mbstate_t));
+++			  beg++;
+++			  bytes_left--;
+++			  continue;
+++			}
+++
+++		      if (mlen == (size_t) -2)
+++			/* Offset points inside multibyte character:
+++			 * no good. */
+++			break;
+++
+++		      beg += mlen;
+++		      bytes_left -= mlen;
+++		    }
++ 		}
+++	      else
+++#endif /* MBS_SUPPORT */
++ 	      beg += offset;
++ 	      /* Narrow down to the line containing the candidate, and
++ 		 run it through DFA. */
++ 	      end = memchr(beg, eol, buflim - beg);
++ 	      end++;
++ #ifdef MBS_SUPPORT
++-	      if (MB_CUR_MAX > 1 && mb_properties[beg - buf] == 0)
+++	      if (mb_cur_max > 1 && bytes_left)
++ 		continue;
++-#endif
+++#endif /* MBS_SUPPORT */
++ 	      while (beg > buf && beg[-1] != eol)
++ 		--beg;
++-	      if (kwsm.index < kwset_exact_matches)
+++	      if (
+++#ifdef MBS_SUPPORT
+++		  !(match_icase && mb_cur_max > 1) &&
+++#endif /* MBS_SUPPORT */
+++		  (kwsm.index < kwset_exact_matches))
++ 		goto success;
++ 	      if (dfaexec (&dfa, beg, end - beg, &backref) == (size_t) -1)
++ 		continue;
++@@ -405,13 +406,47 @@
++ 	  else
++ 	    {
++ 	      /* No good fixed strings; start with DFA. */
+++#ifdef MBS_SUPPORT
+++	      size_t bytes_left = 0;
+++#endif /* MBS_SUPPORT */
++ 	      size_t offset = dfaexec (&dfa, beg, buflim - beg, &backref);
++ 	      if (offset == (size_t) -1)
++ 		break;
++ 	      /* Narrow down to the line we've found. */
+++#ifdef MBS_SUPPORT
+++	      if (mb_cur_max > 1 && !using_utf8)
+++		{
+++		  bytes_left = offset;
+++		  while (bytes_left)
+++		    {
+++		      size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++		      if (mlen == (size_t) -1 || mlen == 0)
+++			{
+++			  /* Incomplete character: treat as single-byte. */
+++			  memset (&mbs, '\0', sizeof (mbstate_t));
+++			  beg++;
+++			  bytes_left--;
+++			  continue;
+++			}
+++
+++		      if (mlen == (size_t) -2)
+++			/* Offset points inside multibyte character:
+++			 * no good. */
+++			break;
+++
+++		      beg += mlen;
+++		      bytes_left -= mlen;
+++		    }
+++		}
+++	      else
+++#endif /* MBS_SUPPORT */
++ 	      beg += offset;
++ 	      end = memchr (beg, eol, buflim - beg);
++ 	      end++;
+++#ifdef MBS_SUPPORT
+++	      if (mb_cur_max > 1 && bytes_left)
+++		continue;
+++#endif /* MBS_SUPPORT */
++ 	      while (beg > buf && beg[-1] != eol)
++ 		--beg;
++ 	    }
++@@ -480,37 +515,148 @@
++ 	    }
++ 	} /* for Regex patterns.  */
++     } /* for (beg = end ..) */
++-#ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        free((char*)buf);
++-      if (mb_properties)
++-        free(mb_properties);
++-    }
++-#endif /* MBS_SUPPORT */
++   return (size_t) -1;
++ 
++  success:
++   ret_val = beg - buf;
++-#ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        free((char*)buf);
++-      if (mb_properties)
++-        free(mb_properties);
++-    }
++-#endif /* MBS_SUPPORT */
++   *match_size = end - beg;
++   return ret_val;
++ }
++ 
+++#ifdef MBS_SUPPORT
+++static int f_i_multibyte; /* whether we're using the new -Fi MB method */
+++static struct
+++{
+++  wchar_t **patterns;
+++  size_t count, maxlen;
+++  unsigned char *match;
+++} Fimb;
+++#endif
+++
++ static void
++ Fcompile (char const *pattern, size_t size)
++ {
+++  int mb_cur_max = MB_CUR_MAX;
++   char const *beg, *lim, *err;
++ 
+++  check_utf8 ();
+++#ifdef MBS_SUPPORT
+++  /* Support -F -i for UTF-8 input. */
+++  if (match_icase && mb_cur_max > 1)
+++    {
+++      mbstate_t mbs;
+++      wchar_t *wcpattern = xmalloc ((size + 1) * sizeof (wchar_t));
+++      const char *patternend = pattern;
+++      size_t wcsize;
+++      kwset_t fimb_kwset = NULL;
+++      char *starts = NULL;
+++      wchar_t *wcbeg, *wclim;
+++      size_t allocated = 0;
+++
+++      memset (&mbs, '\0', sizeof (mbs));
+++# ifdef __GNU_LIBRARY__
+++      wcsize = mbsnrtowcs (wcpattern, &patternend, size, size, &mbs);
+++      if (patternend != pattern + size)
+++	wcsize = (size_t) -1;
+++# else
+++      {
+++	char *patterncopy = xmalloc (size + 1);
+++
+++	memcpy (patterncopy, pattern, size);
+++	patterncopy[size] = '\0';
+++	patternend = patterncopy;
+++	wcsize = mbsrtowcs (wcpattern, &patternend, size, &mbs);
+++	if (patternend != patterncopy + size)
+++	  wcsize = (size_t) -1;
+++	free (patterncopy);
+++      }
+++# endif
+++      if (wcsize + 2 <= 2)
+++	{
+++fimb_fail:
+++	  free (wcpattern);
+++	  free (starts);
+++	  if (fimb_kwset)
+++	    kwsfree (fimb_kwset);
+++	  free (Fimb.patterns);
+++	  Fimb.patterns = NULL;
+++	}
+++      else
+++	{
+++	  if (!(fimb_kwset = kwsalloc (NULL)))
+++	    error (2, 0, _("memory exhausted"));
+++
+++	  starts = xmalloc (mb_cur_max * 3);
+++	  wcbeg = wcpattern;
+++	  do
+++	    {
+++	      int i;
+++	      size_t wclen;
+++
+++	      if (Fimb.count >= allocated)
+++		{
+++		  if (allocated == 0)
+++		    allocated = 128;
+++		  else
+++		    allocated *= 2;
+++		  Fimb.patterns = xrealloc (Fimb.patterns,
+++					    sizeof (wchar_t *) * allocated);
+++		}
+++	      Fimb.patterns[Fimb.count++] = wcbeg;
+++	      for (wclim = wcbeg;
+++		   wclim < wcpattern + wcsize && *wclim != L'\n'; ++wclim)
+++		*wclim = towlower (*wclim);
+++	      *wclim = L'\0';
+++	      wclen = wclim - wcbeg;
+++	      if (wclen > Fimb.maxlen)
+++		Fimb.maxlen = wclen;
+++	      if (wclen > 3)
+++		wclen = 3;
+++	      if (wclen == 0)
+++		{
+++		  if ((err = kwsincr (fimb_kwset, "", 0)) != 0)
+++		    error (2, 0, err);
+++		}
+++	      else
+++		for (i = 0; i < (1 << wclen); i++)
+++		  {
+++		    char *p = starts;
+++		    int j, k;
+++
+++		    for (j = 0; j < wclen; ++j)
+++		      {
+++			wchar_t wc = wcbeg[j];
+++			if (i & (1 << j))
+++			  {
+++			    wc = towupper (wc);
+++			    if (wc == wcbeg[j])
+++			      continue;
+++			  }
+++			k = wctomb (p, wc);
+++			if (k <= 0)
+++			  goto fimb_fail;
+++			p += k;
+++		      }
+++		    if ((err = kwsincr (fimb_kwset, starts, p - starts)) != 0)
+++		      error (2, 0, err);
+++		  }
+++	      if (wclim < wcpattern + wcsize)
+++		++wclim;
+++	      wcbeg = wclim;
+++	    }
+++	  while (wcbeg < wcpattern + wcsize);
+++	  f_i_multibyte = 1;
+++	  kwset = fimb_kwset;
+++	  free (starts);
+++	  Fimb.match = xmalloc (Fimb.count);
+++	  if ((err = kwsprep (kwset)) != 0)
+++	    error (2, 0, err);
+++	  return;
+++	}
+++    }
+++#endif /* MBS_SUPPORT */
+++
+++
++   kwsinit ();
++   beg = pattern;
++   do
++@@ -529,6 +675,76 @@
++     error (2, 0, err);
++ }
++ 
+++#ifdef MBS_SUPPORT
+++static int
+++Fimbexec (const char *buf, size_t size, size_t *plen, int exact)
+++{
+++  size_t len, letter, i;
+++  int ret = -1;
+++  mbstate_t mbs;
+++  wchar_t wc;
+++  int patterns_left;
+++
+++  assert (match_icase && f_i_multibyte == 1);
+++  assert (MB_CUR_MAX > 1);
+++
+++  memset (&mbs, '\0', sizeof (mbs));
+++  memset (Fimb.match, '\1', Fimb.count);
+++  letter = len = 0;
+++  patterns_left = 1;
+++  while (patterns_left && len <= size)
+++    {
+++      size_t c;
+++
+++      patterns_left = 0;
+++      if (len < size)
+++	{
+++	  c = mbrtowc (&wc, buf + len, size - len, &mbs);
+++	  if (c + 2 <= 2)
+++	    return ret;
+++
+++	  wc = towlower (wc);
+++	}
+++      else
+++	{
+++	  c = 1;
+++	  wc = L'\0';
+++	}
+++
+++      for (i = 0; i < Fimb.count; i++)
+++	{
+++	  if (Fimb.match[i])
+++	    {
+++	      if (Fimb.patterns[i][letter] == L'\0')
+++		{
+++		  /* Found a match. */
+++		  *plen = len;
+++		  if (!exact && !match_words)
+++		    return 0;
+++		  else
+++		    {
+++		      /* For -w or exact look for longest match.  */
+++		      ret = 0;
+++		      Fimb.match[i] = '\0';
+++		      continue;
+++		    }
+++		}
+++
+++	      if (Fimb.patterns[i][letter] == wc)
+++		patterns_left = 1;
+++	      else
+++		Fimb.match[i] = '\0';
+++	    }
+++	}
+++
+++      len += c;
+++      letter++;
+++    }
+++
+++  return ret;
+++}
+++#endif /* MBS_SUPPORT */
+++
++ static size_t
++ Fexecute (char const *buf, size_t size, size_t *match_size, int exact)
++ {
++@@ -538,119 +754,270 @@
++   struct kwsmatch kwsmatch;
++   size_t ret_val;
++ #ifdef MBS_SUPPORT
++-  char *mb_properties = NULL;
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        {
++-          char *case_buf = malloc(size);
++-          memcpy(case_buf, buf, size);
++-          buf = case_buf;
++-        }
++-      mb_properties = check_multibyte_string(buf, size);
++-    }
+++  int mb_cur_max = MB_CUR_MAX;
+++  mbstate_t mbs;
+++  memset (&mbs, '\0', sizeof (mbstate_t));
+++  const char *last_char = NULL;
++ #endif /* MBS_SUPPORT */
++ 
++   for (beg = buf; beg <= buf + size; ++beg)
++     {
++-      size_t offset = kwsexec (kwset, beg, buf + size - beg, &kwsmatch);
+++      size_t offset;
+++      offset = kwsexec (kwset, beg, buf + size - beg, &kwsmatch);
+++
++       if (offset == (size_t) -1)
++ 	{
++-#ifdef MBS_SUPPORT
++-          if (MB_CUR_MAX > 1)
++-            {
++-              if (match_icase)
++-                free ((char*)buf);
++-              free(mb_properties);
++-            }
++-#endif /* MBS_SUPPORT */
++ 	  return offset;
++ 	}
++ #ifdef MBS_SUPPORT
++-      if (MB_CUR_MAX > 1 && mb_properties[offset+beg-buf] == 0)
++-	continue; /* It is a part of multibyte character.  */
+++      if (mb_cur_max > 1 && !using_utf8)
+++	{
+++	  size_t bytes_left = offset;
+++	  while (bytes_left)
+++	    {
+++	      size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++
+++	      last_char = beg;
+++	      if (mlen == (size_t) -1 || mlen == 0)
+++		{
+++		  /* Incomplete character: treat as single-byte. */
+++		  memset (&mbs, '\0', sizeof (mbstate_t));
+++		  beg++;
+++		  bytes_left--;
+++		  continue;
+++		}
+++
+++	      if (mlen == (size_t) -2)
+++		/* Offset points inside multibyte character: no good. */
+++		break;
+++
+++	      beg += mlen;
+++	      bytes_left -= mlen;
+++	    }
+++
+++	  if (bytes_left)
+++	    continue;
+++	}
+++      else
++ #endif /* MBS_SUPPORT */
++       beg += offset;
+++#ifdef MBS_SUPPORT
+++      /* For f_i_multibyte, the string at beg now matches first 3 chars of
+++	 one of the search strings (less if there are shorter search strings).
+++	 See if this is a real match.  */
+++      if (f_i_multibyte
+++	  && Fimbexec (beg, buf + size - beg, &kwsmatch.size[0], exact))
+++	goto next_char;
+++#endif /* MBS_SUPPORT */
++       len = kwsmatch.size[0];
++-      if (exact)
+++      if (exact && !match_words)
++ 	{
++ 	  *match_size = len;
++           ret_val = beg - buf;
++-#ifdef MBS_SUPPORT
++-          if (MB_CUR_MAX > 1)
++-            {
++-              if (match_icase)
++-                free ((char*)buf);
++-              free(mb_properties);
++-            }
++-#endif /* MBS_SUPPORT */
++ 	  return ret_val;
++ 	}
++       if (match_lines)
++ 	{
++ 	  if (beg > buf && beg[-1] != eol)
++-	    continue;
+++	    goto next_char;
++ 	  if (beg + len < buf + size && beg[len] != eol)
++-	    continue;
+++	    goto next_char;
++ 	  goto success;
++ 	}
++       else if (match_words)
++-	for (try = beg; len; )
++-	  {
++-	    if (try > buf && WCHAR((unsigned char) try[-1]))
++-	      break;
++-	    if (try + len < buf + size && WCHAR((unsigned char) try[len]))
++-	      {
++-		offset = kwsexec (kwset, beg, --len, &kwsmatch);
++-		if (offset == (size_t) -1)
++-		  {
+++	{
+++	  while (len)
+++	    {
+++	      int word_match = 0;
+++	      if (beg > buf)
+++		{
+++#ifdef MBS_SUPPORT
+++		  if (mb_cur_max > 1)
+++		    {
+++		      const char *s;
+++		      int mr;
+++		      wchar_t pwc;
+++
+++		      if (using_utf8)
+++			{
+++			  s = beg - 1;
+++			  while (s > buf
+++				 && (unsigned char) *s >= 0x80
+++				 && (unsigned char) *s <= 0xbf)
+++			    --s;
+++			}
+++		      else
+++			s = last_char;
+++		      mr = mbtowc (&pwc, s, beg - s);
+++		      if (mr <= 0)
+++			memset (&mbs, '\0', sizeof (mbstate_t));
+++		      else if ((iswalnum (pwc) || pwc == L'_')
+++			       && mr == (int) (beg - s))
+++			goto next_char;
+++		    }
+++		  else
+++#endif /* MBS_SUPPORT */
+++		  if (WCHAR ((unsigned char) beg[-1]))
+++		    goto next_char;
+++		}
++ #ifdef MBS_SUPPORT
++-                    if (MB_CUR_MAX > 1)
++-                      {
++-                        if (match_icase)
++-                          free ((char*)buf);
++-                        free(mb_properties);
++-                      }
+++	      if (mb_cur_max > 1)
+++		{
+++		  wchar_t nwc;
+++		  int mr;
+++
+++		  mr = mbtowc (&nwc, beg + len, buf + size - beg - len);
+++		  if (mr <= 0)
+++		    {
+++		      memset (&mbs, '\0', sizeof (mbstate_t));
+++		      word_match = 1;
+++		    }
+++		  else if (!iswalnum (nwc) && nwc != L'_')
+++		    word_match = 1;
+++		}
+++	      else
++ #endif /* MBS_SUPPORT */
++-		    return offset;
+++		if (beg + len >= buf + size || !WCHAR ((unsigned char) beg[len]))
+++		  word_match = 1;
+++	      if (word_match)
+++		{
+++		  if (!exact)
+++		    /* Returns the whole line now we know there's a word match. */
+++		    goto success;
+++		  else {
+++		    /* Returns just this word match. */
+++		    *match_size = len;
+++		    return beg - buf;
++ 		  }
++-		try = beg + offset;
++-		len = kwsmatch.size[0];
++-	      }
++-	    else
++-	      goto success;
++-	  }
++-      else
++-	goto success;
++-    }
+++		}
+++	      if (len > 0)
+++		{
+++		  /* Try a shorter length anchored at the same place. */
+++		  --len;
+++		  offset = kwsexec (kwset, beg, len, &kwsmatch);
++ 
+++		  if (offset == -1)
+++		    goto next_char; /* Try a different anchor. */
++ #ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        free((char*)buf);
++-      if (mb_properties)
++-        free(mb_properties);
++-    }
+++		  if (mb_cur_max > 1 && !using_utf8)
+++		    {
+++		      size_t bytes_left = offset;
+++		      while (bytes_left)
+++			{
+++			  size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++
+++			  last_char = beg;
+++			  if (mlen == (size_t) -1 || mlen == 0)
+++			    {
+++			      /* Incomplete character: treat as single-byte. */
+++			      memset (&mbs, '\0', sizeof (mbstate_t));
+++			      beg++;
+++			      bytes_left--;
+++			      continue;
+++			    }
+++
+++			  if (mlen == (size_t) -2)
+++			    {
+++			      /* Offset points inside multibyte character:
+++			       * no good. */
+++			      break;
+++			    }
+++
+++			  beg += mlen;
+++			  bytes_left -= mlen;
+++			}
+++
+++		      if (bytes_left)
+++			{
+++			  memset (&mbs, '\0', sizeof (mbstate_t));
+++			  goto next_char; /* Try a different anchor. */
+++			}
+++		    }
+++		  else
+++#endif /* MBS_SUPPORT */
+++		  beg += offset;
+++#ifdef MBS_SUPPORT
+++		  /* The string at beg now matches first 3 chars of one of
+++		     the search strings (less if there are shorter search
+++		     strings).  See if this is a real match.  */
+++		  if (f_i_multibyte
+++		      && Fimbexec (beg, len - offset, &kwsmatch.size[0],
+++				   exact))
+++		    goto next_char;
+++#endif /* MBS_SUPPORT */
+++		  len = kwsmatch.size[0];
+++		}
+++	    }
+++	}
+++       else
+++ 	goto success;
+++next_char:;
+++#ifdef MBS_SUPPORT
+++      /* Advance to next character.  For MB_CUR_MAX == 1 case this is handled
+++	 by ++beg above.  */
+++      if (mb_cur_max > 1)
+++	{
+++	  if (using_utf8)
+++	    {
+++	      unsigned char c = *beg;
+++	      if (c >= 0xc2)
+++		{
+++		  if (c < 0xe0)
+++		    ++beg;
+++		  else if (c < 0xf0)
+++		    beg += 2;
+++		  else if (c < 0xf8)
+++		    beg += 3;
+++		  else if (c < 0xfc)
+++		    beg += 4;
+++		  else if (c < 0xfe)
+++		    beg += 5;
+++		}
+++	    }
+++	  else
+++	    {
+++	      size_t l = mbrlen (beg, buf + size - beg, &mbs);
+++
+++	      last_char = beg;
+++	      if (l + 2 >= 2)
+++		beg += l - 1;
+++	      else
+++		memset (&mbs, '\0', sizeof (mbstate_t));
+++	    }
+++	}
++ #endif /* MBS_SUPPORT */
+++    }
+++
++   return -1;
++ 
++  success:
+++#ifdef MBS_SUPPORT
+++  if (mb_cur_max > 1 && !using_utf8)
+++    {
+++      end = beg + len;
+++      while (end < buf + size)
+++	{
+++	  size_t mlen = mbrlen (end, buf + size - end, &mbs);
+++	  if (mlen == (size_t) -1 || mlen == (size_t) -2 || mlen == 0)
+++	    {
+++	      memset (&mbs, '\0', sizeof (mbstate_t));
+++	      mlen = 1;
+++	    }
+++	  if (mlen == 1 && *end == eol)
+++	    break;
+++
+++	  end += mlen;
+++	}
+++     }
+++  else
+++ #endif /* MBS_SUPPORT */
++   end = memchr (beg + len, eol, (buf + size) - (beg + len));
+++
++   end++;
++   while (buf < beg && beg[-1] != eol)
++     --beg;
++   *match_size = end - beg;
++   ret_val = beg - buf;
++-#ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1)
++-    {
++-      if (match_icase)
++-        free((char*)buf);
++-      if (mb_properties)
++-        free(mb_properties);
++-    }
++-#endif /* MBS_SUPPORT */
++   return ret_val;
++ }
++ 
+--- grep-2.5.1.ds2.orig/debian/patches/55-bigfile.patch
++++ grep-2.5.1.ds2/debian/patches/55-bigfile.patch
+@@ -0,0 +1,97 @@
++--- src/grep.c.orig	2002-03-26 16:54:12.000000000 +0100
+++++ src/grep.c	2003-04-03 16:46:36.000000000 +0200
++@@ -1,5 +1,5 @@
++ /* grep.c - main driver file for grep.
++-   Copyright 1992, 1997-1999, 2000 Free Software Foundation, Inc.
+++   Copyright 1992, 1997-1999, 2000, 2003 Free Software Foundation, Inc.
++ 
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++@@ -82,6 +82,12 @@ static struct exclude *included_patterns
++ static char const short_options[] =
++ "0123456789A:B:C:D:EFGHIPUVX:abcd:e:f:hiKLlm:noqRrsuvwxyZz";
++ 
+++/* Default for `file_list' if no files are given on the command line. */
+++static char *stdin_argv[] =
+++{
+++  "-", NULL
+++};
+++
++ /* Non-boolean long options that have no corresponding short equivalents.  */
++ enum
++ {
++@@ -348,7 +354,16 @@ fillbuf (size_t save, struct stats const
++ 	 for byte sentinels fore and aft.  */
++       newalloc = newsize + pagesize + 1;
++ 
++-      newbuf = bufalloc < newalloc ? xmalloc (bufalloc = newalloc) : buffer;
+++      newbuf = bufalloc < newalloc ? malloc (bufalloc = newalloc) : buffer;
+++      if (newbuf == NULL)
+++	{
+++	  int saved_errno = errno;
+++	  free (buffer);
+++	  bufalloc = ALIGN_TO (INITIAL_BUFSIZE, pagesize) + pagesize + 1;
+++	  buffer = xmalloc (bufalloc);
+++	  errno = saved_errno;
+++	  return 0;
+++	}
++       readbuf = ALIGN_TO (newbuf + 1 + save, pagesize);
++       bufbeg = readbuf - save;
++       memmove (bufbeg, buffer + saved_offset, save);
++@@ -1288,6 +1303,7 @@ main (int argc, char **argv)
++   FILE *fp;
++   extern char *optarg;
++   extern int optind;
+++  char **file_list;
++ 
++   initialize_main (&argc, &argv);
++   program_name = argv[0];
++@@ -1712,29 +1728,29 @@ warranty; not even for MERCHANTABILITY o
++   if (max_count == 0)
++     exit (1);
++ 
++-  if (optind < argc)
+++  file_list = (optind == argc ? stdin_argv : &argv[optind]);
+++
+++  status = 1;
+++  while (1)
++     {
++-	status = 1;
++-	do
+++      char *file = *file_list++;
+++
+++      if (file == NULL)
+++	break;
+++
+++      if ((included_patterns || excluded_patterns)
+++	  && !isdir (file))
++ 	{
++-	  char *file = argv[optind];
++-	  if ((included_patterns || excluded_patterns)
++-	      && !isdir (file))
++-	    {
++-	      if (included_patterns &&
++-		  ! excluded_filename (included_patterns, file, 0))
++-		continue;
++-	      if (excluded_patterns &&
++-		  excluded_filename (excluded_patterns, file, 0))
++-		continue;
++-	    }
++-	  status &= grepfile (strcmp (file, "-") == 0 ? (char *) NULL : file,
++-			      &stats_base);
+++	  if (included_patterns &&
+++	      ! excluded_filename (included_patterns, file, 0))
+++	    continue;
+++	  if (excluded_patterns &&
+++	      excluded_filename (excluded_patterns, file, 0))
+++	    continue;
++ 	}
++-	while ( ++optind < argc);
+++      status &= grepfile (strcmp (file, "-") == 0
+++			  ? (char *) NULL : file, &stats_base);
++     }
++-  else
++-    status = grepfile ((char *) NULL, &stats_base);
++ 
++   /* We register via atexit() to test stdout.  */
++   exit (errseen ? 2 : status);
+--- grep-2.5.1.ds2.orig/debian/patches/3-grep-lower_case.patch
++++ grep-2.5.1.ds2/debian/patches/3-grep-lower_case.patch
+@@ -0,0 +1,46 @@
++--- doc/grep.1.orig	2005-11-07 03:17:23.000000000 -0500
+++++ doc/grep.1	2005-11-07 03:20:14.000000000 -0500
++@@ -32,7 +32,7 @@
++ .RI [ FILE .\|.\|.]
++ .SH DESCRIPTION
++ .PP
++-.B Grep
+++.B grep
++ searches the named input
++ .IR FILE s
++ (or standard input if no files are named, or
++@@ -51,13 +51,13 @@
++ and
++ .B rgrep
++ are available.
++-.B Egrep
+++.B egrep
++ is the same as
++ .BR "grep\ \-E" .
++-.B Fgrep
+++.B fgrep
++ is the same as
++ .BR "grep\ \-F" .
++-.B Rgrep
+++.B rgrep
++ is the same as
++ .BR "grep\ \-r" .
++ .SH OPTIONS
++@@ -448,7 +448,7 @@
++ Regular expressions are constructed analogously to arithmetic
++ expressions, by using various operators to combine smaller expressions.
++ .PP
++-.B Grep
+++.B grep
++ understands three different versions of regular expression syntax:
++ \*(lqbasic,\*(rq \*(lqextended,\*(rq and \*(lqperl.\*(rq  In
++ .RB "\s-1GNU\s0\ " grep ,
++@@ -671,7 +671,7 @@
++ \s-1POSIX.2\s0 allows this behavior as an extension, but portable scripts
++ should avoid it.
++ .SH "ENVIRONMENT VARIABLES"
++-Grep's behavior is affected by the following environment variables.
+++grep's behavior is affected by the following environment variables.
++ .PP
++ A locale
++ .BI LC_ foo
+--- grep-2.5.1.ds2.orig/debian/patches/62-dfa.c-charclass-bracket.patch
++++ grep-2.5.1.ds2/debian/patches/62-dfa.c-charclass-bracket.patch
+@@ -0,0 +1,29 @@
++Fix the probelm
++ $ echo "[" | LC_CTYPE=de_DE.utf-8 grep "[[:space:]]"
++ [
++ $
++
++--- ./src/dfa.c.orig	2004-10-20 02:04:52.000000000 +0900
+++++ ./src/dfa.c	2004-10-20 02:11:05.000000000 +0900
++@@ -597,7 +597,20 @@
++ 		      work_mbc->coll_elems[work_mbc->ncoll_elems++] = elem;
++ 		    }
++  		}
++-	      wc = WEOF;
+++	      /* NOTE:
+++	       * At the beginning of processing [[ type of constructs, 
+++	       * wc (= '[') is stored in wc1 for backtrack case.  
+++	       * But if it process normally, wc1 remains '[' and it will 
+++	       * be put as normal character in work_mbc->chars[].
+++	       * This is why '[' will matches [[:space:]] or other 
+++	       * character classes. This is a bug.
+++	       *
+++	       * I think wc1 should be set WEOF at the end of processing 
+++	       * [[ type of constructs.
+++	       * Bug#277122.
+++	       * fixed by Fumitoshi UKAI
+++	       */
+++	      wc = wc1 = WEOF;
++ 	    }
++ 	  else
++ 	    /* We treat '[' as a normal character here.  */
+--- grep-2.5.1.ds2.orig/debian/patches/67-w.patch
++++ grep-2.5.1.ds2/debian/patches/67-w.patch
+@@ -0,0 +1,130 @@
++reverted:
++--- src/search.c.orig	2005-09-07 00:12:02.000000000 +0200
+++++ src/search.c	2005-09-07 00:12:02.000000000 +0200
++@@ -330,6 +330,7 @@
++   static int use_dfa_checked = 0;
++   size_t i, ret_val;
++ #ifdef MBS_SUPPORT
+++  const char *last_char = NULL;
++   int mb_cur_max = MB_CUR_MAX;
++   mbstate_t mbs;
++   memset (&mbs, '\0', sizeof (mbstate_t));
++@@ -385,6 +386,8 @@
++ 		  while (bytes_left)
++ 		    {
++ 		      size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++
+++		      last_char = beg;
++ 		      if (mlen == (size_t) -1 || mlen == 0)
++ 			{
++ 			  /* Incomplete character: treat as single-byte. */
++@@ -445,6 +448,8 @@
++ 		  while (bytes_left)
++ 		    {
++ 		      size_t mlen = mbrlen (beg, bytes_left, &mbs);
+++
+++		      last_char = beg;
++ 		      if (mlen == (size_t) -1 || mlen == 0)
++ 			{
++ 			  /* Incomplete character: treat as single-byte. */
++@@ -492,7 +497,7 @@
++ 				       end - beg - 1, &(patterns[i].regs))))
++ 	    {
++ 	      len = patterns[i].regs.end[0] - start;
+++	      if (exact && !match_words)
++-	      if (exact)
++ 		{
++ 		  *match_size = len;
++ 		  return start;
++@@ -510,10 +515,87 @@
++ 	      if (match_words)
++ 		while (start >= 0)
++ 		  {
+++		    int lword_match = 0;
+++		    if (start == 0)
+++		      lword_match = 1;
+++		    else
+++		      {
+++			assert (start > 0);
+++#ifdef MBS_SUPPORT
+++			if (mb_cur_max > 1)
+++			  {
+++			    const char *s;
+++			    int mr;
+++			    wchar_t pwc;
+++
+++			    if (using_utf8)
+++			      {
+++				s = beg + start - 1;
+++				while (s > buf
+++				       && (unsigned char) *s >= 0x80
+++				       && (unsigned char) *s <= 0xbf)
+++				  --s;
+++			      }
+++			    else
+++			      s = last_char;
+++			    mr = mbtowc (&pwc, s, beg + start - s);
+++			    if (mr <= 0)
+++			      {
+++				memset (&mbs, '\0', sizeof (mbstate_t));
+++				lword_match = 1;
+++			      }
+++			    else if (!(iswalnum (pwc) || pwc == L'_')
+++				     && mr == (int) (beg + start - s))
+++			      lword_match = 1;
+++			  }
+++			else
+++#endif /* MBS_SUPPORT */
+++			if (!WCHAR ((unsigned char) beg[start - 1]))
+++			  lword_match = 1;
+++		      }
+++
+++		    if (lword_match)
+++		      {
+++			int rword_match = 0;
+++			if (start + len == end - beg - 1)
+++			  rword_match = 1;
+++			else
+++			  {
+++#ifdef MBS_SUPPORT
+++			    if (mb_cur_max > 1)
+++			      {
+++				wchar_t nwc;
+++				int mr;
+++
+++				mr = mbtowc (&nwc, beg + start + len,
+++					     end - beg - start - len - 1);
+++				if (mr <= 0)
+++				  {
+++				    memset (&mbs, '\0', sizeof (mbstate_t));
+++				    rword_match = 1;
+++				  }
+++				else if (!iswalnum (nwc) && nwc != L'_')
+++				  rword_match = 1;
+++			      }
+++			    else
+++#endif /* MBS_SUPPORT */
+++			    if (!WCHAR ((unsigned char) beg[start + len]))
+++			      rword_match = 1;
+++			  }
+++
+++			if (rword_match)
+++			  {
+++			    if (!exact)
+++			      /* Returns the whole line. */
+++			      goto success;
+++			    else
+++			      {
+++			      /* Returns just this word match. */
+++				*match_size = len;
+++				return start;
+++			      }
+++			  }
+++		      }
++-		    if ((start == 0 || !WCHAR ((unsigned char) beg[start - 1]))
++-			&& (len == end - beg - 1
++-			    || !WCHAR ((unsigned char) beg[start + len])))
++-		      goto success;
++ 		    if (len > 0)
++ 		      {
++ 			/* Try a shorter length anchored at the same place. */
+--- grep-2.5.1.ds2.orig/debian/patches/55-grep-2.5.1-i18n-0.1.patch
++++ grep-2.5.1.ds2/debian/patches/55-grep-2.5.1-i18n-0.1.patch
+@@ -0,0 +1,399 @@
++--- lib/regex.c	2001-04-03 03:04:45.000000000 +0900
+++++ lib/regex.c	2002-08-08 10:34:36.000000000 +0900
++@@ -60,6 +60,10 @@
++ #ifdef MBS_SUPPORT
++ # define CHAR_TYPE wchar_t
++ # define US_CHAR_TYPE wchar_t/* unsigned character type */
+++# define CHAR_T_SIGN (1 << (sizeof(CHAR_TYPE) * 8 - 1))
+++# if defined _AIX
+++#  define WCHAR_T_NEED_SIGNEXTEND 1
+++# endif /* _AIX */
++ # define COMPILED_BUFFER_VAR wc_buffer
++ # define OFFSET_ADDRESS_SIZE 1 /* the size which STORE_NUMBER macro use */
++ # define CHAR_CLASS_SIZE ((__alignof__(wctype_t)+sizeof(wctype_t))/sizeof(CHAR_TYPE)+1)
++@@ -618,10 +622,13 @@ typedef enum
++ /* ifdef MBS_SUPPORT, we store NUMBER in 1 element.  */
++ 
++ #ifdef MBS_SUPPORT
++-# define EXTRACT_NUMBER(destination, source)				\
++-  do {									\
++-    (destination) = *(source);						\
++-  } while (0)
+++# ifdef WCHAR_T_NEED_SIGNEXTEND
+++#  define EXTRACT_NUMBER(destination, source)				\
+++     (destination) = (*(source) ^ CHAR_T_SIGN) - CHAR_T_SIGN;
+++# else
+++#  define EXTRACT_NUMBER(destination, source)				\
+++     (destination) = *(source)
+++# endif /* WCHAR_T_NEED_SIGNEXTEND */
++ #else
++ # define EXTRACT_NUMBER(destination, source)				\
++   do {									\
++@@ -638,7 +645,11 @@ extract_number (dest, source)
++     US_CHAR_TYPE *source;
++ {
++ #ifdef MBS_SUPPORT
+++# ifdef WCHAR_T_NEED_SIGNEXTEND
+++  *dest = (*source ^ CHAR_T_SIGN) - CHAR_T_SIGN;
+++# else
++   *dest = *source;
+++# endif /* WCHAR_T_NEED_SIGNEXTEND */
++ #else
++   int temp = SIGN_EXTEND_CHAR (*(source + 1));
++   *dest = *source & 0377;
++--- src/dfa.c	2001-09-27 01:57:55.000000000 +0900
+++++ src/dfa.c	2002-08-08 10:34:36.000000000 +0900
++@@ -414,7 +414,7 @@ update_mb_len_index (unsigned char const
++ 
++ /* This function fetch a wide character, and update cur_mb_len,
++    used only if the current locale is a multibyte environment.  */
++-static wchar_t
+++static wint_t
++ fetch_wc (char const *eoferr)
++ {
++   wchar_t wc;
++@@ -423,7 +423,7 @@ fetch_wc (char const *eoferr)
++       if (eoferr != 0)
++ 	dfaerror (eoferr);
++       else
++-	return -1;
+++	return WEOF;
++     }
++ 
++   cur_mb_len = mbrtowc(&wc, lexptr, lexleft, &mbs);
++@@ -459,7 +459,7 @@ fetch_wc (char const *eoferr)
++ static void
++ parse_bracket_exp_mb ()
++ {
++-  wchar_t wc, wc1, wc2;
+++  wint_t wc, wc1, wc2;
++ 
++   /* Work area to build a mb_char_classes.  */
++   struct mb_char_classes *work_mbc;
++@@ -496,7 +496,7 @@ parse_bracket_exp_mb ()
++     work_mbc->invert = 0;
++   do
++     {
++-      wc1 = -1; /* mark wc1 is not initialized".  */
+++      wc1 = WEOF; /* mark wc1 is not initialized".  */
++ 
++       /* Note that if we're looking at some other [:...:] construct,
++ 	 we just treat it as a bunch of ordinary characters.  We can do
++@@ -551,7 +551,7 @@ parse_bracket_exp_mb ()
++ 		  wt = wctype (str);
++ 
++ 		  if (ch_classes_al == 0)
++-		    MALLOC(work_mbc->ch_classes, wchar_t, ++ch_classes_al);
+++		    MALLOC(work_mbc->ch_classes, wctype_t, ++ch_classes_al);
++ 		  REALLOC_IF_NECESSARY(work_mbc->ch_classes, wctype_t,
++ 				       ch_classes_al,
++ 				       work_mbc->nch_classes + 1);
++@@ -586,7 +586,7 @@ parse_bracket_exp_mb ()
++ 		      work_mbc->coll_elems[work_mbc->ncoll_elems++] = elem;
++ 		    }
++  		}
++-	      wc = -1;
+++	      wc = WEOF;
++ 	    }
++ 	  else
++ 	    /* We treat '[' as a normal character here.  */
++@@ -600,7 +600,7 @@ parse_bracket_exp_mb ()
++ 	    wc = fetch_wc(("Unbalanced ["));
++ 	}
++ 
++-      if (wc1 == -1)
+++      if (wc1 == WEOF)
++ 	wc1 = fetch_wc(_("Unbalanced ["));
++ 
++       if (wc1 == L'-')
++@@ -630,17 +630,17 @@ parse_bracket_exp_mb ()
++ 	    }
++ 	  REALLOC_IF_NECESSARY(work_mbc->range_sts, wchar_t,
++ 			       range_sts_al, work_mbc->nranges + 1);
++-	  work_mbc->range_sts[work_mbc->nranges] = wc;
+++	  work_mbc->range_sts[work_mbc->nranges] = (wchar_t)wc;
++ 	  REALLOC_IF_NECESSARY(work_mbc->range_ends, wchar_t,
++ 			       range_ends_al, work_mbc->nranges + 1);
++-	  work_mbc->range_ends[work_mbc->nranges++] = wc2;
+++	  work_mbc->range_ends[work_mbc->nranges++] = (wchar_t)wc2;
++ 	}
++-      else if (wc != -1)
+++      else if (wc != WEOF)
++ 	/* build normal characters.  */
++ 	{
++ 	  REALLOC_IF_NECESSARY(work_mbc->chars, wchar_t, chars_al,
++ 			       work_mbc->nchars + 1);
++-	  work_mbc->chars[work_mbc->nchars++] = wc;
+++	  work_mbc->chars[work_mbc->nchars++] = (wchar_t)wc;
++ 	}
++     }
++   while ((wc = wc1) != L']');
++--- src/grep.c	2002-03-27 00:54:12.000000000 +0900
+++++ src/grep.c	2002-08-08 10:34:36.000000000 +0900
++@@ -30,6 +30,12 @@
++ # include <sys/time.h>
++ # include <sys/resource.h>
++ #endif
+++#if defined HAVE_WCTYPE_H && defined HAVE_WCHAR_H && defined HAVE_MBRTOWC
+++/* We can handle multibyte string.  */
+++# define MBS_SUPPORT
+++# include <wchar.h>
+++# include <wctype.h>
+++#endif
++ #include <stdio.h>
++ #include "system.h"
++ #include "getopt.h"
++@@ -1697,6 +1703,37 @@ warranty; not even for MERCHANTABILITY o
++   if (!install_matcher (matcher) && !install_matcher ("default"))
++     abort ();
++ 
+++#ifdef MBS_SUPPORT
+++  if (MB_CUR_MAX != 1 && match_icase)
+++    {
+++      wchar_t wc;
+++      mbstate_t cur_state, prev_state;
+++      int i, len = strlen(keys);
+++
+++      memset(&cur_state, 0, sizeof(mbstate_t));
+++      for (i = 0; i <= len ;)
+++	{
+++	  size_t mbclen;
+++	  mbclen = mbrtowc(&wc, keys + i, len - i, &cur_state);
+++	  if (mbclen == (size_t) -1 || mbclen == (size_t) -2 || mbclen == 0)
+++	    {
+++	      /* An invalid sequence, or a truncated multibyte character.
+++		 We treat it as a singlebyte character.  */
+++	      mbclen = 1;
+++	    }
+++	  else
+++	    {
+++	      if (iswupper((wint_t)wc))
+++		{
+++		  wc = towlower((wint_t)wc);
+++		  wcrtomb(keys + i, wc, &cur_state);
+++		}
+++	    }
+++	  i += mbclen;
+++	}
+++    }
+++#endif /* MBS_SUPPORT */
+++
++   (*compile)(keys, keycc);
++ 
++   if ((argc - optind > 1 && !no_filenames) || with_filenames)
++--- src/search.c	2001-04-19 12:42:14.000000000 +0900
+++++ src/search.c	2002-08-08 10:34:36.000000000 +0900
++@@ -151,13 +151,14 @@ check_multibyte_string(char const *buf, 
++ {
++   char *mb_properties = malloc(size);
++   mbstate_t cur_state;
+++  wchar_t wc;
++   int i;
++   memset(&cur_state, 0, sizeof(mbstate_t));
++   memset(mb_properties, 0, sizeof(char)*size);
++   for (i = 0; i < size ;)
++     {
++       size_t mbclen;
++-      mbclen = mbrlen(buf + i, size - i, &cur_state);
+++      mbclen = mbrtowc(&wc, buf + i, size - i, &cur_state);
++ 
++       if (mbclen == (size_t) -1 || mbclen == (size_t) -2 || mbclen == 0)
++ 	{
++@@ -165,6 +166,14 @@ check_multibyte_string(char const *buf, 
++ 	     We treat it as a singlebyte character.  */
++ 	  mbclen = 1;
++ 	}
+++      else if (match_icase)
+++	{
+++	  if (iswupper((wint_t)wc))
+++	    {
+++	      wc = towlower((wint_t)wc);
+++	      wcrtomb(buf + i, wc, &cur_state);
+++	    }
+++	}
++       mb_properties[i] = mbclen;
++       i += mbclen;
++     }
++@@ -339,14 +348,20 @@ EGexecute (char const *buf, size_t size,
++   char eol = eolbyte;
++   int backref, start, len;
++   struct kwsmatch kwsm;
++-  size_t i;
+++  size_t i, ret_val;
++ #ifdef MBS_SUPPORT
++   char *mb_properties = NULL;
++-#endif /* MBS_SUPPORT */
++-
++-#ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1 && kwset)
++-    mb_properties = check_multibyte_string(buf, size);
+++  if (MB_CUR_MAX > 1)
+++    {
+++      if (match_icase)
+++        {
+++          char *case_buf = malloc(size);
+++          memcpy(case_buf, buf, size);
+++          buf = case_buf;
+++        }
+++      if (kwset)
+++        mb_properties = check_multibyte_string(buf, size);
+++    }
++ #endif /* MBS_SUPPORT */
++ 
++   buflim = buf + size;
++@@ -363,8 +378,12 @@ EGexecute (char const *buf, size_t size,
++ 		{
++ #ifdef MBS_SUPPORT
++ 		  if (MB_CUR_MAX > 1)
++-		    free(mb_properties);
++-#endif
+++                    {
+++                      if (match_icase)
+++                        free ((char*)buf);
+++                      free(mb_properties);
+++                    }
+++#endif /* MBS_SUPPORT */
++ 		  return (size_t)-1;
++ 		}
++ 	      beg += offset;
++@@ -462,18 +481,29 @@ EGexecute (char const *buf, size_t size,
++ 	} /* for Regex patterns.  */
++     } /* for (beg = end ..) */
++ #ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1 && mb_properties)
++-    free (mb_properties);
+++  if (MB_CUR_MAX > 1)
+++    {
+++      if (match_icase)
+++        free((char*)buf);
+++      if (mb_properties)
+++        free(mb_properties);
+++    }
++ #endif /* MBS_SUPPORT */
++   return (size_t) -1;
++ 
++  success:
+++  ret_val = beg - buf;
++ #ifdef MBS_SUPPORT
++-  if (MB_CUR_MAX > 1 && mb_properties)
++-    free (mb_properties);
+++  if (MB_CUR_MAX > 1)
+++    {
+++      if (match_icase)
+++        free((char*)buf);
+++      if (mb_properties)
+++        free(mb_properties);
+++    }
++ #endif /* MBS_SUPPORT */
++   *match_size = end - beg;
++-  return beg - buf;
+++  return ret_val;
++ }
++ 
++ static void
++@@ -506,10 +536,19 @@ Fexecute (char const *buf, size_t size, 
++   register size_t len;
++   char eol = eolbyte;
++   struct kwsmatch kwsmatch;
+++  size_t ret_val;
++ #ifdef MBS_SUPPORT
++-  char *mb_properties;
+++  char *mb_properties = NULL;
++   if (MB_CUR_MAX > 1)
++-    mb_properties = check_multibyte_string (buf, size);
+++    {
+++      if (match_icase)
+++        {
+++          char *case_buf = malloc(size);
+++          memcpy(case_buf, buf, size);
+++          buf = case_buf;
+++        }
+++      mb_properties = check_multibyte_string(buf, size);
+++    }
++ #endif /* MBS_SUPPORT */
++ 
++   for (beg = buf; beg <= buf + size; ++beg)
++@@ -518,8 +557,12 @@ Fexecute (char const *buf, size_t size, 
++       if (offset == (size_t) -1)
++ 	{
++ #ifdef MBS_SUPPORT
++-	  if (MB_CUR_MAX > 1)
++-	    free(mb_properties);
+++          if (MB_CUR_MAX > 1)
+++            {
+++              if (match_icase)
+++                free ((char*)buf);
+++              free(mb_properties);
+++            }
++ #endif /* MBS_SUPPORT */
++ 	  return offset;
++ 	}
++@@ -532,11 +575,16 @@ Fexecute (char const *buf, size_t size, 
++       if (exact)
++ 	{
++ 	  *match_size = len;
+++          ret_val = beg - buf;
++ #ifdef MBS_SUPPORT
++-	  if (MB_CUR_MAX > 1)
++-	    free (mb_properties);
+++          if (MB_CUR_MAX > 1)
+++            {
+++              if (match_icase)
+++                free ((char*)buf);
+++              free(mb_properties);
+++            }
++ #endif /* MBS_SUPPORT */
++-	  return beg - buf;
+++	  return ret_val;
++ 	}
++       if (match_lines)
++ 	{
++@@ -557,8 +605,12 @@ Fexecute (char const *buf, size_t size, 
++ 		if (offset == (size_t) -1)
++ 		  {
++ #ifdef MBS_SUPPORT
++-		    if (MB_CUR_MAX > 1)
++-		      free (mb_properties);
+++                    if (MB_CUR_MAX > 1)
+++                      {
+++                        if (match_icase)
+++                          free ((char*)buf);
+++                        free(mb_properties);
+++                      }
++ #endif /* MBS_SUPPORT */
++ 		    return offset;
++ 		  }
++@@ -574,7 +626,12 @@ Fexecute (char const *buf, size_t size, 
++ 
++ #ifdef MBS_SUPPORT
++   if (MB_CUR_MAX > 1)
++-    free (mb_properties);
+++    {
+++      if (match_icase)
+++        free((char*)buf);
+++      if (mb_properties)
+++        free(mb_properties);
+++    }
++ #endif /* MBS_SUPPORT */
++   return -1;
++ 
++@@ -584,11 +641,17 @@ Fexecute (char const *buf, size_t size, 
++   while (buf < beg && beg[-1] != eol)
++     --beg;
++   *match_size = end - beg;
+++  ret_val = beg - buf;
++ #ifdef MBS_SUPPORT
++   if (MB_CUR_MAX > 1)
++-    free (mb_properties);
+++    {
+++      if (match_icase)
+++        free((char*)buf);
+++      if (mb_properties)
+++        free(mb_properties);
+++    }
++ #endif /* MBS_SUPPORT */
++-  return beg - buf;
+++  return ret_val;
++ }
++ 
++ #if HAVE_LIBPCRE
+--- grep-2.5.1.ds2.orig/debian/patches/50-po.patch
++++ grep-2.5.1.ds2/debian/patches/50-po.patch
+@@ -0,0 +1,162 @@
++--- po/grep.pot
+++++ po/grep.pot
++@@ -7,7 +7,7 @@
++ msgid ""
++ msgstr ""
++ "Project-Id-Version: PACKAGE VERSION\n"
++-"POT-Creation-Date: 2002-03-26 16:38+0100\n"
+++"POT-Creation-Date: 2003-02-17 22:26-0500\n"
++ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++ "Language-Team: LANGUAGE <LL@li.org>\n"
++@@ -71,44 +71,44 @@
++ msgid "input is too large to count"
++ msgstr ""
++ 
++-#: src/grep.c:605
+++#: src/grep.c:607
++ msgid "writing output"
++ msgstr ""
++ 
++-#: src/grep.c:878
+++#: src/grep.c:880
++ #, c-format
++ msgid "Binary file %s matches\n"
++ msgstr ""
++ 
++-#: src/grep.c:892
+++#: src/grep.c:894
++ msgid "(standard input)"
++ msgstr ""
++ 
++-#: src/grep.c:997
+++#: src/grep.c:999
++ #, c-format
++ msgid "warning: %s: %s\n"
++ msgstr ""
++ 
++-#: src/grep.c:998
+++#: src/grep.c:1000
++ msgid "recursive directory loop"
++ msgstr ""
++ 
++-#: src/grep.c:1046
+++#: src/grep.c:1048
++ #, c-format
++ msgid "Usage: %s [OPTION]... PATTERN [FILE]...\n"
++ msgstr ""
++ 
++-#: src/grep.c:1048
+++#: src/grep.c:1050
++ #, c-format
++ msgid "Try `%s --help' for more information.\n"
++ msgstr ""
++ 
++-#: src/grep.c:1053
+++#: src/grep.c:1055
++ #, c-format
++ msgid "Usage: %s [OPTION]... PATTERN [FILE] ...\n"
++ msgstr ""
++ 
++-#: src/grep.c:1054
+++#: src/grep.c:1056
++ #, c-format
++ msgid ""
++ "Search for PATTERN in each FILE or standard input.\n"
++@@ -117,7 +117,7 @@
++ "Regexp selection and interpretation:\n"
++ msgstr ""
++ 
++-#: src/grep.c:1059
+++#: src/grep.c:1061
++ msgid ""
++ "  -E, --extended-regexp     PATTERN is an extended regular expression\n"
++ "  -F, --fixed-strings       PATTERN is a set of newline-separated strings\n"
++@@ -125,7 +125,7 @@
++ "  -P, --perl-regexp         PATTERN is a Perl regular expression\n"
++ msgstr ""
++ 
++-#: src/grep.c:1064
+++#: src/grep.c:1066
++ msgid ""
++ "  -e, --regexp=PATTERN      use PATTERN as a regular expression\n"
++ "  -f, --file=FILE           obtain PATTERN from FILE\n"
++@@ -135,7 +135,7 @@
++ "  -z, --null-data           a data line ends in 0 byte, not newline\n"
++ msgstr ""
++ 
++-#: src/grep.c:1071
+++#: src/grep.c:1073
++ msgid ""
++ "\n"
++ "Miscellaneous:\n"
++@@ -146,7 +146,7 @@
++ "      --mmap                use memory-mapped input if possible\n"
++ msgstr ""
++ 
++-#: src/grep.c:1079
+++#: src/grep.c:1081
++ msgid ""
++ "\n"
++ "Output control:\n"
++@@ -178,7 +178,7 @@
++ "  -Z, --null                print 0 byte after FILE name\n"
++ msgstr ""
++ 
++-#: src/grep.c:1107
+++#: src/grep.c:1109
++ msgid ""
++ "\n"
++ "Context control:\n"
++@@ -198,42 +198,42 @@
++ "and 2 if trouble.\n"
++ msgstr ""
++ 
++-#: src/grep.c:1124
+++#: src/grep.c:1126
++ msgid ""
++ "\n"
++ "Report bugs to <bug-gnu-utils@gnu.org>.\n"
++ msgstr ""
++ 
++-#: src/grep.c:1134
+++#: src/grep.c:1136
++ msgid "conflicting matchers specified"
++ msgstr ""
++ 
++-#: src/grep.c:1376
+++#: src/grep.c:1378
++ msgid "unknown devices method"
++ msgstr ""
++ 
++-#: src/grep.c:1443
+++#: src/grep.c:1445
++ msgid "unknown directories method"
++ msgstr ""
++ 
++-#: src/grep.c:1510
+++#: src/grep.c:1512
++ msgid "invalid max count"
++ msgstr ""
++ 
++-#: src/grep.c:1565
+++#: src/grep.c:1567
++ msgid "unknown binary-files type"
++ msgstr ""
++ 
++-#: src/grep.c:1660
+++#: src/grep.c:1662
++ #, c-format
++ msgid "%s (GNU grep) %s\n"
++ msgstr ""
++ 
++-#: src/grep.c:1662
+++#: src/grep.c:1664
++ msgid "Copyright 1988, 1992-1999, 2000, 2001 Free Software Foundation, Inc.\n"
++ msgstr ""
++ 
++-#: src/grep.c:1664
+++#: src/grep.c:1666
++ msgid ""
++ "This is free software; see the source for copying conditions. There is NO\n"
++ "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+--- grep-2.5.1.ds2.orig/debian/patches/65-dfa-optional.patch
++++ grep-2.5.1.ds2/debian/patches/65-dfa-optional.patch
+@@ -0,0 +1,68 @@
++--- src/search.c.orig	2005-09-06 22:22:17.000000000 +0200
+++++ src/search.c	2005-09-06 22:25:41.000000000 +0200
++@@ -326,6 +326,8 @@
++   char eol = eolbyte;
++   int backref, start, len;
++   struct kwsmatch kwsm;
+++  static int use_dfa;
+++  static int use_dfa_checked = 0;
++   size_t i, ret_val;
++ #ifdef MBS_SUPPORT
++   int mb_cur_max = MB_CUR_MAX;
++@@ -333,6 +335,26 @@
++   memset (&mbs, '\0', sizeof (mbstate_t));
++ #endif /* MBS_SUPPORT */
++ 
+++  if (!use_dfa_checked)
+++    {
+++      char *grep_use_dfa = getenv ("GREP_USE_DFA");
+++      if (!grep_use_dfa)
+++	{
+++#ifdef MBS_SUPPORT
+++	  /* Turn off DFA when processing multibyte input. */
+++	  use_dfa = (MB_CUR_MAX == 1);
+++#else
+++	  use_dfa = 1;
+++#endif /* MBS_SUPPORT */
+++	}
+++      else
+++	{
+++	  use_dfa = atoi (grep_use_dfa);
+++	}
+++
+++      use_dfa_checked = 1;
+++    }
+++
++   buflim = buf + size;
++ 
++   for (beg = end = buf; end < buflim; beg = end)
++@@ -400,7 +422,8 @@
++ #endif /* MBS_SUPPORT */
++ 		  (kwsm.index < kwset_exact_matches))
++ 		goto success;
++-	      if (dfaexec (&dfa, beg, end - beg, &backref) == (size_t) -1)
+++	      if (use_dfa &&
+++		  dfaexec (&dfa, beg, end - beg, &backref) == (size_t) -1)
++ 		continue;
++ 	    }
++ 	  else
++@@ -409,7 +432,9 @@
++ #ifdef MBS_SUPPORT
++ 	      size_t bytes_left = 0;
++ #endif /* MBS_SUPPORT */
++-	      size_t offset = dfaexec (&dfa, beg, buflim - beg, &backref);
+++	      size_t offset = 0;
+++	      if (use_dfa)
+++		offset = dfaexec (&dfa, beg, buflim - beg, &backref);
++ 	      if (offset == (size_t) -1)
++ 		break;
++ 	      /* Narrow down to the line we've found. */
++@@ -451,7 +476,7 @@
++ 		--beg;
++ 	    }
++ 	  /* Successful, no backreferences encountered! */
++-	  if (!backref)
+++	  if (use_dfa && !backref)
++ 	    goto success;
++ 	}
++       else
+--- grep-2.5.1.ds2.orig/debian/patches/2-grep-man.patch
++++ grep-2.5.1.ds2/debian/patches/2-grep-man.patch
+@@ -0,0 +1,167 @@
++--- doc/grep.1.orig	2003-08-17 18:03:17.000000000 -0400
+++++ doc/grep.1	2003-08-17 18:04:22.000000000 -0400
++@@ -15,7 +15,7 @@
++ .Id $Id: 2-grep-man.patch,v 1.2 2003/09/11 00:55:16 rmgolbeck Exp $
++ .TH GREP 1 \*(Dt "GNU Project"
++ .SH NAME
++-grep, egrep, fgrep \- print lines matching a pattern
+++grep, egrep, fgrep, rgrep \- print lines matching a pattern
++ .SH SYNOPSIS
++ .B grep
++ .RI [ options ]
++@@ -45,10 +45,11 @@
++ .B grep
++ prints the matching lines.
++ .PP
++-In addition, two variant programs
++-.B egrep
++-and
+++In addition, three variant programs
+++.B egrep,
++ .B fgrep
+++and
+++.B rgrep
++ are available.
++ .B Egrep
++ is the same as
++@@ -56,6 +57,9 @@
++ .B Fgrep
++ is the same as
++ .BR "grep\ \-F" .
+++.B Rgrep
+++is the same as
+++.BR "grep\ \-r" .
++ .SH OPTIONS
++ .TP
++ .BI \-A " NUM" "\fR,\fP \-\^\-after-context=" NUM
++@@ -79,14 +83,6 @@
++ .B \-\^\-
++ between contiguous groups of matches.
++ .TP
++-.BI \-C " NUM" "\fR,\fP \-\^\-context=" NUM
++-Print
++-.I NUM
++-lines of output context.
++-Places a line containing
++-.B \-\^\-
++-between contiguous groups of matches.
++-.TP
++ .BR \-b ", " \-\^\-byte-offset
++ Print the byte offset within the input file before
++ each line of output.
++@@ -126,10 +122,13 @@
++ which can have nasty side effects if the output is a terminal and if the
++ terminal driver interprets some of it as commands.
++ .TP
++-.BI \-\^\-colour[=\fIWHEN\fR] ", " \-\^\-color[=\fIWHEN\fR]
++-Surround the matching string with the marker find in
++-.B GREP_COLOR
++-environment variable. WHEN may be `never', `always', or `auto'
+++.BI \-C " NUM" "\fR,\fP \-\^\-context=" NUM
+++Print
+++.I NUM
+++lines of output context.
+++Places a line containing
+++.B \-\^\-
+++between contiguous groups of matches.
++ .TP
++ .BR \-c ", " \-\^\-count
++ Suppress normal output; instead print a count of
++@@ -138,6 +137,11 @@
++ .BR \-v ", " \-\^\-invert-match
++ option (see below), count non-matching lines.
++ .TP
+++.BI \-\^\-colour[=\fIWHEN\fR] ", " \-\^\-color[=\fIWHEN\fR]
+++Surround the matching string with the marker find in
+++.B GREP_COLOR
+++environment variable. WHEN may be `never', `always', or `auto'
+++.TP
++ .BI \-D " ACTION" "\fR,\fP \-\^\-devices=" ACTION
++ If an input file is a device, FIFO or socket, use
++ .I ACTION
++@@ -191,10 +195,6 @@
++ .I PATTERN
++ as a list of fixed strings, separated by newlines,
++ any of which is to be matched.
++-.BR \-P ", " \-\^\-perl-regexp
++-Interpret
++-.I PATTERN
++-as a Perl regular expression.
++ .TP
++ .BI \-f " FILE" "\fR,\fP \-\^\-file=" FILE
++ Obtain patterns from
++@@ -240,6 +240,15 @@
++ would normally have been printed.  The scanning will
++ stop on the first match.
++ .TP
+++.BI \-\^\-label= LABEL
+++Displays input actually coming from standard input as input coming from file
+++.I LABEL.
+++This is especially useful for tools like zgrep, e.g.
+++.B "gzip -cd foo.gz |grep --label=foo something"
+++.TP
+++.BR \-\^\-line-buffered
+++Use line buffering, it can be a performance penalty.
+++.TP
++ .BI \-m " NUM" "\fR,\fP \-\^\-max-count=" NUM
++ Stop reading a file after
++ .I NUM
++@@ -296,14 +305,10 @@
++ Show only the part of a matching line that matches
++ .I PATTERN.
++ .TP
++-.BI \-\^\-label= LABEL
++-Displays input actually coming from standard input as input coming from file
++-.I LABEL.
++-This is especially useful for tools like zgrep, e.g.
++-.B "gzip -cd foo.gz |grep --label=foo something"
++-.TP
++-.BR \-\^\-line-buffering
++-Use line buffering, it can be a performance penality.
+++.BR \-P ", " \-\^\-perl-regexp
+++Interpret
+++.I PATTERN
+++as a Perl regular expression.
++ .TP
++ .BR \-q ", " \-\^\-quiet ", " \-\^\-silent
++ Quiet; do not write anything to standard output.
++@@ -425,6 +430,18 @@
++ .B "xargs \-0"
++ to process arbitrary file names,
++ even those that contain newline characters.
+++.TP
+++.BR \-z ", " \-\^\-null-data
+++Treat the input as a set of lines, each terminated by a zero byte
+++(the \s-1ASCII\s0
+++.B NUL 
+++character) instead of a newline.  Like the 
+++.BR \-Z
+++or 
+++.BR "\-\-null"
+++option, this option can be used with commands like 
+++.BR "sort \-z"
+++to process arbitrary file names.
++ .SH "REGULAR EXPRESSIONS"
++ .PP
++ A regular expression is a pattern that describes a set of strings.
++@@ -432,13 +449,17 @@
++ expressions, by using various operators to combine smaller expressions.
++ .PP
++ .B Grep
++-understands two different versions of regular expression syntax:
++-\*(lqbasic\*(rq and \*(lqextended.\*(rq  In
+++understands three different versions of regular expression syntax:
+++\*(lqbasic,\*(rq \*(lqextended,\*(rq and \*(lqperl.\*(rq  In
++ .RB "\s-1GNU\s0\ " grep ,
++-there is no difference in available functionality using either syntax.
+++there is no difference in available functionality using either of the 
+++first two syntaxes.
++ In other implementations, basic regular expressions are less powerful.
++ The following description applies to extended regular expressions;
++ differences for basic regular expressions are summarized afterwards.
+++Perl regular expressions add additional functionality, but the implementation
+++used here is undocumented and is not compatible with 
+++other grep implementations.
++ .PP
++ The fundamental building blocks are the regular expressions that match
++ a single character.  Most characters, including all letters and digits,
+--- grep-2.5.1.ds2.orig/debian/patches/68-no-grep.texi.patch
++++ grep-2.5.1.ds2/debian/patches/68-no-grep.texi.patch
+@@ -0,0 +1,63 @@
++--- doc/Makefile.in.orig	2005-09-26 21:24:40.124755000 +1000
+++++ doc/Makefile.in	2005-09-26 21:38:20.546197245 +1000
++@@ -97,7 +97,7 @@ install_sh = @install_sh@
++ 
++ AUTOMAKE_OPTIONS = no-dependencies
++ 
++-info_TEXINFOS = grep.texi
+++#info_TEXINFOS = grep.texi
++ 
++ man_MANS = grep.1 fgrep.1 egrep.1
++ 
++@@ -110,9 +110,9 @@ CONFIG_HEADER = $(top_builddir)/config.h
++ CONFIG_CLEAN_FILES =
++ depcomp =
++ DIST_SOURCES =
++-INFO_DEPS = grep.info
+++#INFO_DEPS = grep.info
++ DVIS = grep.dvi
++-TEXINFOS = grep.texi
+++#TEXINFOS = grep.texi
++ 
++ NROFF = nroff
++ MANS = $(man_MANS)
++@@ -132,17 +132,17 @@ Makefile:  $(srcdir)/Makefile.in  $(top_
++ 
++ $(srcdir)/version.texi:  $(srcdir)/stamp-vti
++ 	@:
++-$(srcdir)/stamp-vti: grep.texi $(top_srcdir)/configure.in
++-	@(set `$(SHELL) $(srcdir)/mdate-sh $(srcdir)/grep.texi`; \
++-	echo "@set UPDATED $$1 $$2 $$3"; \
++-	echo "@set UPDATED-MONTH $$2 $$3"; \
++-	echo "@set EDITION $(VERSION)"; \
++-	echo "@set VERSION $(VERSION)") > vti.tmp
++-	@cmp -s vti.tmp $(srcdir)/version.texi \
++-	  || (echo "Updating $(srcdir)/version.texi"; \
++-	      cp vti.tmp $(srcdir)/version.texi)
++-	-@rm -f vti.tmp
++-	@cp $(srcdir)/version.texi $@
+++#$(srcdir)/stamp-vti: grep.texi $(top_srcdir)/configure.in
+++#	@(set `$(SHELL) $(srcdir)/mdate-sh $(srcdir)/grep.texi`; \
+++#	echo "@set UPDATED $$1 $$2 $$3"; \
+++#	echo "@set UPDATED-MONTH $$2 $$3"; \
+++#	echo "@set EDITION $(VERSION)"; \
+++#	echo "@set VERSION $(VERSION)") > vti.tmp
+++#	@cmp -s vti.tmp $(srcdir)/version.texi \
+++#	  || (echo "Updating $(srcdir)/version.texi"; \
+++#	      cp vti.tmp $(srcdir)/version.texi)
+++#	-@rm -f vti.tmp
+++#	@cp $(srcdir)/version.texi $@
++ 
++ mostlyclean-vti:
++ 	-rm -f vti.tmp
++@@ -150,8 +150,8 @@ mostlyclean-vti:
++ maintainer-clean-vti:
++ 	-rm -f $(srcdir)/stamp-vti $(srcdir)/version.texi
++ 
++-grep.info: grep.texi $(srcdir)/version.texi
++-grep.dvi: grep.texi $(srcdir)/version.texi
+++#grep.info: grep.texi $(srcdir)/version.texi
+++#grep.dvi: grep.texi $(srcdir)/version.texi
++ 
++ .texi.info:
++ 	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
+--- grep-2.5.1.ds2.orig/debian/patches/61-dfa.c-case_fold-charclass.patch
++++ grep-2.5.1.ds2/debian/patches/61-dfa.c-case_fold-charclass.patch
+@@ -0,0 +1,29 @@
++fix the following problem in multibyte locales.
++ % echo Y | egrep -i '[y]'
++ %
++
++derived from gawk's dfa.c.
++
++--- ./src/dfa.c.orig	2004-10-20 02:04:52.000000000 +0900
+++++ ./src/dfa.c	2004-10-20 02:07:01.000000000 +0900
++@@ -652,6 +652,20 @@
++ 	  REALLOC_IF_NECESSARY(work_mbc->chars, wchar_t, chars_al,
++ 			       work_mbc->nchars + 1);
++ 	  work_mbc->chars[work_mbc->nchars++] = (wchar_t)wc;
+++	  if (case_fold && (iswlower((wint_t) wc) || iswupper((wint_t) wc)))
+++	    {
+++		wint_t altcase;
+++
+++		altcase = wc;		/* keeps compiler happy */
+++		if (iswlower((wint_t) wc))
+++		  altcase = towupper((wint_t) wc);
+++		else if (iswupper((wint_t) wc))
+++		  altcase = towlower((wint_t) wc);
+++
+++		REALLOC_IF_NECESSARY(work_mbc->chars, wchar_t, chars_al,
+++			       work_mbc->nchars + 1);
+++		work_mbc->chars[work_mbc->nchars++] = (wchar_t) altcase;
+++	    }
++ 	}
++     }
++   while ((wc = wc1) != L']');
+--- grep-2.5.1.ds2.orig/debian/patches/66-match_icase.patch
++++ grep-2.5.1.ds2/debian/patches/66-match_icase.patch
+@@ -0,0 +1,48 @@
++--- lib/posix/regex.h.orig	2004-01-05 12:09:12.984391131 +0000
+++++ lib/posix/regex.h	2004-01-05 12:09:24.717990622 +0000
++@@ -109,6 +109,10 @@
++    If not set, \{, \}, {, and } are literals.  */
++ #define RE_INTERVALS (RE_HAT_LISTS_NOT_NEWLINE << 1)
++
+++/* If this bit is set, then ignore case when matching.
+++   If not set, then case is significant.  */
+++#define RE_ICASE (RE_INVALID_INTERVAL_ORD << 1)
+++
++ /* If this bit is set, +, ? and | aren't recognized as operators.
++    If not set, they are.  */
++ #define RE_LIMITED_OPS (RE_INTERVALS << 1)
++--- src/search.c.orig	2005-09-06 23:50:40.000000000 +0200
+++++ src/search.c	2005-09-06 23:59:33.000000000 +0200
++@@ -35,7 +35,7 @@
++ 
++ #include "system.h"
++ #include "grep.h"
++-#include "regex.h"
+++#include <regex.h>
++ #include "dfa.h"
++ #include "kwset.h"
++ #include "error.h"
++@@ -167,7 +167,7 @@
++   char const *motif = pattern;
++ 
++   check_utf8 ();
++-  re_set_syntax (RE_SYNTAX_GREP | RE_HAT_LISTS_NOT_NEWLINE);
+++  re_set_syntax (RE_SYNTAX_GREP | RE_HAT_LISTS_NOT_NEWLINE | (match_icase ? RE_ICASE : 0));
++   dfasyntax (RE_SYNTAX_GREP | RE_HAT_LISTS_NOT_NEWLINE, match_icase, eolbyte);
++ 
++   /* For GNU regex compiler we have to pass the patterns separately to detect
++@@ -246,12 +246,12 @@
++   check_utf8 ();
++   if (strcmp (matcher, "awk") == 0)
++     {
++-      re_set_syntax (RE_SYNTAX_AWK);
+++      re_set_syntax (RE_SYNTAX_AWK | (match_icase ? RE_ICASE : 0));
++       dfasyntax (RE_SYNTAX_AWK, match_icase, eolbyte);
++     }
++   else
++     {
++-      re_set_syntax (RE_SYNTAX_POSIX_EGREP);
+++      re_set_syntax (RE_SYNTAX_POSIX_EGREP | (match_icase ? RE_ICASE : 0));
++       dfasyntax (RE_SYNTAX_POSIX_EGREP, match_icase, eolbyte);
++     }
++ 
+--- grep-2.5.1.ds2.orig/debian/patches/60-dfa.c-case_fold.patch
++++ grep-2.5.1.ds2/debian/patches/60-dfa.c-case_fold.patch
+@@ -0,0 +1,20 @@
++--- ./src/dfa.c.orig	2004-10-19 01:52:09.000000000 +0900
+++++ ./src/dfa.c	2004-10-19 01:59:43.000000000 +0900
++@@ -547,6 +547,17 @@
++ 		/* build character class.  */
++ 		{
++ 		  wctype_t wt;
+++		  /* NOTE:
+++		   * when case_fold, character class [:upper:] and [:lower:]
+++		   * should be treated as [:alpha:], this is the same way
+++		   * of glibc/posix/regcomp.c:build_charclass().
+++		   * reported by Bug#276202
+++		   * - fixed by Fumitoshi UKAI
+++		   */
+++		  if (case_fold 
+++		      && (strcmp (str, "upper") == 0 || strcmp (str, "lower") == 0)) 
+++		      strcpy (str, "alpha");
+++
++ 		  /* Query the character class as wctype_t.  */
++ 		  wt = wctype (str);
++ 
+--- grep-2.5.1.ds2.orig/debian/patches/70-grep_fifos.patch
++++ grep-2.5.1.ds2/debian/patches/70-grep_fifos.patch
+@@ -0,0 +1,48 @@
++===================================================================
++RCS file: /sources/grep/grep/src/grep.c,v
++retrieving revision 1.83
++retrieving revision 1.84
++diff -u -r1.83 -r1.84
++--- grep/src/grep.c	2004/11/20 16:15:57	1.83
+++++ grep/src/grep.c	2004/11/20 16:20:38	1.84
++@@ -255,19 +255,6 @@
++   bufbeg[-1] = eolbyte;
++   bufdesc = fd;
++ 
++-  if (fstat (fd, &stats->stat) != 0)
++-    {
++-      error (0, errno, "fstat");
++-      return 0;
++-    }
++-  if (directories == SKIP_DIRECTORIES && S_ISDIR (stats->stat.st_mode))
++-    return 0;
++-#ifndef DJGPP
++-  if (devices == SKIP_DEVICES && (S_ISCHR(stats->stat.st_mode) || S_ISBLK(stats->stat.st_mode) || S_ISSOCK(stats->stat.st_mode)))
++-#else
++-  if (devices == SKIP_DEVICES && (S_ISCHR(stats->stat.st_mode) || S_ISBLK(stats->stat.st_mode)))
++-#endif
++-    return 0;
++   if (S_ISREG (stats->stat.st_mode))
++     {
++       if (file)
++@@ -928,6 +915,19 @@
++     }
++   else
++     {
+++      if (stat (file, &stats->stat) != 0)
+++        {
+++          suppressible_error (file, errno);
+++          return 1;
+++        }
+++      if (directories == SKIP_DIRECTORIES && S_ISDIR (stats->stat.st_mode))
+++        return 1;
+++#ifndef DJGPP
+++      if (devices == SKIP_DEVICES && (S_ISCHR(stats->stat.st_mode) || S_ISBLK(stats->stat.st_mode) || S_ISSOCK(stats->stat.st_mode) || S_ISFIFO(stats->stat.st_mode)))
+++#else
+++      if (devices == SKIP_DEVICES && (S_ISCHR(stats->stat.st_mode) || S_ISBLK(stats->stat.st_mode)))
+++#endif
+++        return 1;
++       while ((desc = open (file, O_RDONLY)) < 0 && errno == EINTR)
++ 	continue;
++ 
++
+--- grep-2.5.1.ds2.orig/debian/postinst
++++ grep-2.5.1.ds2/debian/postinst
+@@ -0,0 +1,7 @@
++#!/bin/sh -e
++
++if [ "$1" = configure ]; then
++  install-info --quiet \
++    --description="Grep searches on input for lines containing a match to a pattern." \
++    --section "General Commands" "General Commands" /usr/info/grep.info
++fi
+--- grep-2.5.1.ds2.orig/grep_2.5.1.tar.gz.cdbs-config_list
++++ grep-2.5.1.ds2/grep_2.5.1.tar.gz.cdbs-config_list
+@@ -0,0 +1,4 @@
++grep-2.5.1/intl/config.charset
++grep-2.5.1/config.hin
++grep-2.5.1/config.guess
++grep-2.5.1/config.sub

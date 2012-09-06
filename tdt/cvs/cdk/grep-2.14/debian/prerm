@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+if [ "$1" = "remove" -o "$1" = "upgrade" ]; then
+  install-info --remove --quiet /usr/share/info/grep.info.gz
+fi

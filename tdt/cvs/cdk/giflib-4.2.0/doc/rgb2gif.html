@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>rgb2gif</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /></head><body><div class="refentry" title="rgb2gif"><a id="rgb2gif.1"></a><div class="titlepage"></div><div class="refnamediv"><a id="name"></a><h2>Name</h2><p>rgb2gif — convert 24-bit images to GIF images using color quantization</p></div><div class="refsynopsisdiv" title="Synopsis"><a id="synopsis"></a><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">rgb2gif</code>  [-v] [-c <em class="replaceable"><code>colors</code></em>] [-1]  -s 
+      		<em class="replaceable"><code>width</code></em>
+      		<em class="replaceable"><code>height</code></em>  [-h] [<em class="replaceable"><code>rgb-file</code></em>]</p></div></div><div class="refsect1" title="Options"><a id="idp3766992"></a><h2>Options</h2><div class="variablelist"><dl><dt><span class="term">-v</span></dt><dd><p>Verbose mode (show progress).
+Enables printout of running scan lines. </p></dd><dt><span class="term">-c colors </span></dt><dd><p> Specifies number of colors to use, in bits per pixels,
+so '-c 8' specifies actually 256 colors (maximum and default).</p></dd><dt><span class="term">-1</span></dt><dd><p> Only one file in the format of RGBRGB... triplets (Each of R,
+G, B is a byte) is read from input.  This file size is 3 * Width *
+Height (see '-s' below.  If stdin is used for input, this option is
+implicitly applied.  The default (if not '-1') is 3 files with the
+names RGBFile.R, RGBFile.G, RGBFile.B, each of which is Width * Height
+bytes.</p></dd><dt><span class="term">-s width height</span></dt><dd><p> Specifies the size of the image to read.</p></dd><dt><span class="term">-h</span></dt><dd><p> Print one line of command line help, similar to Usage
+above.</p></dd></dl></div><p>If no rgb-file is given, rgb2gif will try to read RGB data from
+stdin.</p></div><div class="refsect1" title="Author"><a id="idp75552"></a><h2>Author</h2><p>Gershon Elber.</p></div></div></body></html>

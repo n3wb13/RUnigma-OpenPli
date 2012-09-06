@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>gifrotat</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /></head><body><div class="refentry" title="gifrotat"><a id="gifrotat.1"></a><div class="titlepage"></div><div class="refnamediv"><a id="name"></a><h2>Name</h2><p>gifrotat — rotate a GIF image by a specified angle.</p></div><div class="refsynopsisdiv" title="Synopsis"><a id="synopsis"></a><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">gifrotat</code>  [-v]  -a <em class="replaceable"><code>angle</code></em>  [-s 
+      		<em class="replaceable"><code>width</code></em>
+      		<em class="replaceable"><code>height</code></em>] [-h] [<em class="replaceable"><code>gif-file</code></em>]</p></div></div><div class="refsect1" title="Options"><a id="idp3763776"></a><h2>Options</h2><div class="variablelist"><dl><dt><span class="term">-a Angle</span></dt><dd><p>Specifies the angle to rotate in degrees with respect to the X
+(horizontal) axis.</p></dd><dt><span class="term">-v</span></dt><dd><p>Verbose mode (show progress).
+Enables printout of running scan lines.</p></dd><dt><span class="term">-s Width Height</span></dt><dd><p>Since the rotated image will have the same image size as the
+original, some parts of the image will by clipped out and lost. By
+specifing a (bigger) size explicitly using the `-s' option, these
+parts may be saved.</p></dd><dt><span class="term">-h</span></dt><dd><p>Print one line of command line help, similar to Usage
+above.</p></dd></dl></div><p>If no GIF file is given, gifrotat will try to read a GIF file
+from stdin.</p></div><div class="refsect1" title="Notes"><a id="idp73424"></a><h2>Notes</h2><p>The image is rotated around its center.  No filtering is performed on the
+output, which has the same color map as the input.</p></div><div class="refsect1" title="Author:"><a id="idp74624"></a><h2>Author:</h2><p>Gershon Elber.</p></div></div></body></html>
