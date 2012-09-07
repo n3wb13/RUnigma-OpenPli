@@ -20,8 +20,6 @@ $(appsdir)/xbmc-nightly/config.status: bootstrap libboost directfb libstgles lib
 			PYTHON_SITE_PKG=$(targetprefix)/usr/lib/python2.6/site-packages \
 			PYTHON_CPPFLAGS=-I$(targetprefix)/usr/include/python2.6 \
 			PY_PATH=$(targetprefix)/usr \
-			--includedir=$(targetprefix)/usr/include \
-			--libdir=$(PKDIR)/usr/lib \
 			--disable-gl \
 			--enable-glesv1 \
 			--disable-gles \
