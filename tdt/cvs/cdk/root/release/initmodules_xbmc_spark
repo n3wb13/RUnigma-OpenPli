@@ -69,9 +69,7 @@ modprobe e2_proc
    modprobe stmalloc
    modprobe platform
    modprobe silencegen
-   modprobe smartcard
    modprobe bpamem
-   modprobe cec
 
    echo "init oc"
    modprobe cpu_frequ
