@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>gifovly</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /></head><body><div class="refentry" title="gifovly"><a id="gifovly.1"></a><div class="titlepage"></div><div class="refnamediv"><a id="name"></a><h2>Name</h2><p>gifovly — composite images in a multi-image GIF as layers</p></div><div class="refsynopsisdiv" title="Synopsis"><a id="synopsis"></a><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">gifovly</code>  [-t <em class="replaceable"><code>trans-color</code></em>] [-h]</p></div></div><div class="refsect1" title="Description"><a id="idp3257696"></a><h2>Description</h2><p>This program takes a multi-image GIF file and generates a single GIF
-consisting of all the images overlayed.  Each image's screen position
-is used.  Thus, you can use this together with <a class="ulink" href="gifpos.html" target="_top">gifpos</a> and <a class="ulink" href="gifasm.html" target="_top">gifasm</a> to
-paste together images.</p><p>The GIF to be operated is read in from stdin.  The result GIF is
-written to stdout.</p></div><div class="refsect1" title="Options"><a id="idp3852432"></a><h2>Options</h2><div class="variablelist"><dl><dt><span class="term">-t num</span></dt><dd><p>If this index is given, any pixel in images after the first that
-has this value is not copied.</p></dd><dt><span class="term">-h</span></dt><dd><p>Print one line of command line help, similar to Usage
-above.</p></dd></dl></div></div><div class="refsect1" title="Author"><a id="idp2888528"></a><h2>Author</h2><p>Eric S. Raymond <code class="email">&lt;<a class="email" href="mailto:esr@thyrsus.com">esr@thyrsus.com</a>&gt;</code>.</p></div></div></body></html>
