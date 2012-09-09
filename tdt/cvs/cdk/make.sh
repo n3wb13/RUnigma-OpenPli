@@ -26,17 +26,16 @@ CONFIGPARAM=" \
  --enable-ccache"
 
 ##############################################
-
-echo "
-  _______                     _____              _     _         _
- |__   __|                   |  __ \            | |   | |       | |
-    | | ___  __ _ _ __ ___   | |  | |_   _  ____| | __| |_  __ _| | ___ ___
-    | |/ _ \/ _\` | '_ \` _ \  | |  | | | | |/  __| |/ /| __|/ _\` | |/ _ | __|
-    | |  __/ (_| | | | | | | | |__| | |_| |  (__|   < | |_| (_| | |  __|__ \\
-    |_|\___|\__,_|_| |_| |_| |_____/ \__,_|\____|_|\_\ \__|\__,_|_|\___|___/
-
-"
-
+echo ""
+echo "---------------------------------------"
+echo ""
+echo "Вас приветствуют piterkadet/teslanet/Greder"
+echo ""
+echo "---------------------------------------"
+echo ""
+echo "Подтвердите, пожалуйста, параметры компиляции"
+echo ""
+echo "---------------------------------------"
 ##############################################
 
 # config.guess generates different answers for some packages
@@ -57,7 +56,9 @@ host_alias=`echo ${host_alias} | sed -e "s/suse/${VENDOR}/"`
 CONFIGPARAM="${CONFIGPARAM} --host=${host_alias} --build=${host_alias}"
 
 ##############################################
-
+echo ""
+echo ""
+echo ""
 echo "Поддерживаемая платформа:"
 echo "---------------------------------------"
 echo "   1) Opticum 9500 HD (HL-101)"
@@ -96,7 +97,7 @@ case "$REPLY" in
 	1) KERNEL="--enable-stm24 --enable-p0207";STMFB="stm24";;
 	2) KERNEL="--enable-stm24 --enable-p0210";STMFB="stm24";;
 	3) KERNEL="--enable-stm24 --enable-p0211";STMFB="stm24";;
-	*) KERNEL="--enable-stm24 --enable-p0211";STMFB="stm24";;
+	*) KERNEL="--enable-stm24 --enable-p0210";STMFB="stm24";;
 esac
 CONFIGPARAM="$CONFIGPARAM $KERNEL"
 
@@ -346,7 +347,7 @@ echo $CONFIGPARAM >lastChoice
 echo ""
 echo ""
 echo "-----------------------"
-echo "Параметры Вашей компиляции готовы!"
+echo "Параметры Вашей компиляции подтверждены!"
 echo "-----------------------"
 echo ""
 echo "Теперь Вы должны выбрать один из вариантов компиляции:"
