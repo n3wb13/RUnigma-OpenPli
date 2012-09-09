@@ -56,7 +56,7 @@
  echo "init oc"
    modprobe cpu_frequ
    #405mhz
- echo 3841 > /proc/cpu_frequ/pll0_ndiv_mdiv
+ echo 3841 > /proc/cpu_frequ/pll0_ndiv_mdiv ; echo 1 > /proc/cpu_frequ/pll1_fdma_bypass
 
   /var/bin/swap start
   /var/bin/gmt.sh &
