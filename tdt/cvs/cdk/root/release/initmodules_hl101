@@ -53,6 +53,11 @@
    modprobe smartcard
    modprobe bpamem
    
+ echo "init oc"
+   modprobe cpu_frequ
+   #405mhz
+ echo 3841 > /proc/cpu_frequ/pll0_ndiv_mdiv
+
   /var/bin/swap start
   /var/bin/gmt.sh &
   /var/bin/emustarter.sh &

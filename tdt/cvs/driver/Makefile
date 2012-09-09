@@ -147,9 +147,6 @@ endif
 
 #obj-y	+= proc_register/
 
-ifdef  HL101
-obj-y	+= smartcard/
-endif
 ifdef  ADB_BOX
 obj-y	+= smartcard/
 #obj-y	+= stsci/
@@ -228,6 +225,11 @@ ifdef SPARK7162
 obj-y	+= i2c_spi/
 obj-y	+= smartcard/
 obj-y	+= cec/
+endif
+
+ifdef  HL101
+obj-y	+= smartcard/
+obj-y	+= cpu_frequ/
 endif
 
 ifdef OCTAGON1008
