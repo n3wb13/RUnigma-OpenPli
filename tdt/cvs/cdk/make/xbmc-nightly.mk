@@ -1,4 +1,11 @@
-# tuxbox/enigma2
+DESCRIPTION_xbmc_nightly = xbmc
+PKGR_xbmc_nightly =r1
+SRC_URI_xbmc_nightly = git://github.com/xbmc/xbmc.git
+FILES_xbmc_nightly = \
+/usr/lib/xbmc/xbmc.bin \
+/usr/lib/xbmc/addons/* \
+/usr/lib/xbmc/system/* \
+/usr/share/xbmc/*
 
 $(DEPDIR)/xbmc-nightly.do_prepare: @DEPENDS_xbmc_nightly@
 	@PREPARE_xbmc_nightly@
@@ -47,6 +54,8 @@ $(appsdir)/xbmc-nightly/config.status: bootstrap libboost directfb libstgles lib
 			--disable-paplayer \
 			--enable-gstplayer \
 			--enable-dvdplayer \
+			--enable-libusb \
+			--enable-libcec \
 			--disable-pulse \
 			--disable-alsa
 
@@ -54,16 +63,13 @@ $(DEPDIR)/xbmc-nightly.do_compile: $(appsdir)/xbmc-nightly/config.status
 	cd $(appsdir)/xbmc-nightly && \
 		$(MAKE) all
 	touch $@
-DESCRIPTION_xbmc_nightly = xbmc
-PKGR_xbmc_nightly =r1
-SRC_URI_xbmc_nigtly = git://github.com/xbmc/xbmc.git
-FILES_xbmc_nigtly = /usr/lib/xbmc/xbmc.bin
 
 $(DEPDIR)/xbmc-nightly: xbmc-nightly.do_prepare xbmc-nightly.do_compile
 	$(start_build)
-	$(get_git_version)
-	$(MAKE) -C $(appsdir)/xbmc-nightly install DESTDIR=$(PKDIR)
-	if [ -e $(PKDIR)/usr/lib/xbmc/xbmc.bin ]; then \
+	$(get_git_version) 
+	cd $(appsdir)/xbmc-nightly && \
+		$(MAKE) install DESTDIR=$(PKDIR)
+			if [ -e $(PKDIR)/usr/lib/xbmc/xbmc.bin ]; then \
 		$(target)-strip $(PKDIR)/usr/lib/xbmc/xbmc.bin; \
 	fi
 	$(tocdk_build)
