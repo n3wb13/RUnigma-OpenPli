@@ -4106,13 +4106,13 @@ FILES_tinyxml = \
 
 $(DEPDIR)/tinyxml.do_prepare: @DEPENDS_tinyxml@
 	@PREPARE_tinyxml@
+	aplay beep-1.wav
 	touch $@
 
 $(DEPDIR)/tinyxml.do_compile: $(DEPDIR)/tinyxml.do_prepare
 	cd @DIR_tinyxml@ && \
-	libtoolize -f -c && \
 	$(BUILDENV) \
-	$(MAKE)
+	$(MAKE) all
 	touch $@
 
 $(DEPDIR)/min-tinyxml $(DEPDIR)/std-tinyxml $(DEPDIR)/max-tinyxml \
