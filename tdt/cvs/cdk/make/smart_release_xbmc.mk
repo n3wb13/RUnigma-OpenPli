@@ -238,20 +238,13 @@ release_xbmc_spark:
 	echo "src/gz AR-P http://alien.sat-universum.de" | cat - $(prefix)/release/etc/opkg/official-feed.conf > $(prefix)/release/etc/opkg/official-feed && \
 	mv $(prefix)/release/etc/opkg/official-feed $(prefix)/release/etc/opkg/official-feed.conf && \
 	cp $(buildprefix)/root/etc/lircd_spark.conf.09_00_0B $(prefix)/release/etc/lircd.conf.09_00_0B && \
-	cp $(buildprefix)/root/firmware/component_7111_mb618.fw $(prefix)/release/lib/firmware/component.fw && \
-	$(if $(P0123),cp -dp $(archivedir)/ptinp/pti_123.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko) \
-	$(if $(P0207),cp -dp $(archivedir)/ptinp/pti_207.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko) \
-	$(if $(P0209),cp -dp $(archivedir)/ptinp/pti_209.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko) \
-	$(if $(P0210),cp -dp $(archivedir)/ptinp/pti_210.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko) \
-	$(if $(P0211),cp -dp $(archivedir)/ptinp/pti_211.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko)
+	cp $(buildprefix)/root/firmware/component_7111_mb618.fw $(prefix)/release/lib/firmware/component.fw
 
 release_xbmc_spark7162:
 	echo "spark7162" > $(prefix)/release/etc/hostname && \
 	echo "src/gz AR-P http://alien2.sat-universum.de" | cat - $(prefix)/release/etc/opkg/official-feed.conf > $(prefix)/release/etc/opkg/official-feed && \
 	mv -f $(prefix)/release/etc/opkg/official-feed $(prefix)/release/etc/opkg/official-feed.conf
 	cp $(buildprefix)/root/firmware/component_7105_pdk7105.fw $(prefix)/release/lib/firmware/component.fw
-	$(if $(P0207),cp -dp $(archivedir)/ptinp/pti_207s2.ko $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/pti/pti.ko)
-	rm -f $(prefix)/release/lib/modules/$(KERNELVERSION)/extra/stgfb/stmfb/stmcore-display-sti7106.ko
 
 release_xbmc_fortis_hdbox:
 	echo "fortis" > $(prefix)/release/etc/hostname
@@ -310,53 +303,14 @@ release_xbmc_tf7700: release_xbmc_common_utils
 
 release_xbmc_ipbox9900: release_xbmc_common_utils
 	echo "ipbox9900" > $(prefix)/release/etc/hostname && \
-	cp -f $(buildprefix)/root/release/fstab_ipbox $(prefix)/release/etc/fstab && \
-	cp -p $(buildprefix)/root/release/tvmode_ipbox $(prefix)/release/usr/bin/tvmode && \
-	cp -p $(buildprefix)/root/release/lircd_ipbox $(prefix)/release/usr/bin/lircd && \
-	rm -f $(prefix)/release/lib/firmware/* && \
-	rm -f $(prefix)/release/lib/modules/boxtype.ko && \
-	rm -f $(prefix)/release/lib/modules/bpamem.ko && \
-	rm -f $(prefix)/release/lib/modules/lzo*.ko && \
-	rm -f $(prefix)/release/lib/modules/ramzswap.ko && \
-	rm -f $(prefix)/release/lib/modules/simu_button.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvbi.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvout.ko && \
-	rm -f $(prefix)/release/bin/gotosleep && \
-	rm -f $(prefix)/release/etc/network/interfaces && \
 	echo "config.usage.hdd_standby=0" >> $(prefix)/release/etc/enigma2/settings
 	
 release_xbmc_ipbox99: release_xbmc_common_utils
 	echo "ipbox99" > $(prefix)/release/etc/hostname && \
-	cp -f $(buildprefix)/root/release/fstab_ipbox $(prefix)/release/etc/fstab && \
-	cp -p $(buildprefix)/root/release/tvmode_ipbox $(prefix)/release/usr/bin/tvmode && \
-	cp -p $(buildprefix)/root/release/lircd_ipbox $(prefix)/release/usr/bin/lircd && \
-	rm -f $(prefix)/release/lib/firmware/* && \
-	rm -f $(prefix)/release/lib/modules/boxtype.ko && \
-	rm -f $(prefix)/release/lib/modules/bpamem.ko && \
-	rm -f $(prefix)/release/lib/modules/lzo*.ko && \
-	rm -f $(prefix)/release/lib/modules/ramzswap.ko && \
-	rm -f $(prefix)/release/lib/modules/simu_button.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvbi.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvout.ko && \
-	rm -f $(prefix)/release/bin/gotosleep && \
-	rm -f $(prefix)/release/etc/network/interfaces && \
 	echo "config.usage.hdd_standby=0" >> $(prefix)/release/etc/enigma2/settings
 
 release_xbmc_ipbox55: release_xbmc_common_utils
 	echo "ipbox55" > $(prefix)/release/etc/hostname && \
-	cp -f $(buildprefix)/root/release/fstab_ipbox $(prefix)/release/etc/fstab && \
-	cp -p $(buildprefix)/root/release/tvmode_ipbox $(prefix)/release/usr/bin/tvmode && \
-	cp -p $(buildprefix)/root/release/lircd_ipbox $(prefix)/release/usr/bin/lircd && \
-	rm -f $(prefix)/release/lib/firmware/* && \
-	rm -f $(prefix)/release/lib/modules/boxtype.ko && \
-	rm -f $(prefix)/release/lib/modules/bpamem.ko && \
-	rm -f $(prefix)/release/lib/modules/lzo*.ko && \
-	rm -f $(prefix)/release/lib/modules/ramzswap.ko && \
-	rm -f $(prefix)/release/lib/modules/simu_button.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvbi.ko && \
-	rm -f $(prefix)/release/lib/modules/stmvout.ko && \
-	rm -f $(prefix)/release/bin/gotosleep && \
-	rm -f $(prefix)/release/etc/network/interfaces && \
 	echo "config.usage.hdd_standby=0" >> $(prefix)/release/etc/enigma2/settings
 
 
@@ -364,7 +318,7 @@ release_xbmc_ipbox55: release_xbmc_common_utils
 # IMPORTANT: it is assumed that only one variable is set. Otherwise the target name won't be resolved.
 #
 $(DEPDIR)/min-release_xbmc $(DEPDIR)/std-release_xbmc $(DEPDIR)/max-release_xbmc $(DEPDIR)/release_xbmc: \
-$(DEPDIR)/%release_xbmc:release_xbmc_base release_xbmc_common_utils release_$(TF7700)$(HL101)$(VIP1_V2)$(VIP2_V1)$(UFS910)$(UFS912)$(SPARK)$(SPARK7162)$(UFS922)$(OCTAGON1008)$(FORTIS_HDBOX)$(ATEVIO7500)$(HS7810A)$(HS7110)$(WHITEBOX)$(CUBEREVO)$(CUBEREVO_MINI)$(CUBEREVO_MINI2)$(CUBEREVO_MINI_FTA)$(CUBEREVO_250HD)$(CUBEREVO_2000HD)$(CUBEREVO_9500HD)$(HOMECAST5101)$(IPBOX9900)$(IPBOX99)$(IPBOX55)$(ADB_BOX)
+$(DEPDIR)/%release_xbmc:release_xbmc_base release_xbmc_common_utils driver-ptinp release_$(TF7700)$(HL101)$(VIP1_V2)$(VIP2_V1)$(UFS910)$(UFS912)$(SPARK)$(SPARK7162)$(UFS922)$(OCTAGON1008)$(FORTIS_HDBOX)$(ATEVIO7500)$(HS7810A)$(HS7110)$(WHITEBOX)$(CUBEREVO)$(CUBEREVO_MINI)$(CUBEREVO_MINI2)$(CUBEREVO_MINI_FTA)$(CUBEREVO_250HD)$(CUBEREVO_2000HD)$(CUBEREVO_9500HD)$(HOMECAST5101)$(IPBOX9900)$(IPBOX99)$(IPBOX55)$(ADB_BOX)
 # Post tweaks
 	depmod -b $(prefix)/release $(KERNELVERSION)
 	touch $@
